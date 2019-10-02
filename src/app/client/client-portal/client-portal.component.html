@@ -1,0 +1,90 @@
+
+
+<mat-sidenav-container
+  id="sidenavContainer"
+ fullscreen>
+  <mat-sidenav
+    mode="side"
+    #sidenav
+    id="sidenav"
+    [class.menu-open]="isMenuOpen"
+    [class.menu-close]="!isMenuOpen"
+    opened>
+    
+    <mat-list id="menus">
+      <mat-card class="clayton">
+        <mat-card-header>
+
+          <mat-card-title><p style="margin: 10px 16px 10px;">Client Portal</p></mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-list-item>
+        <button 
+        class="menu-item"
+          mat-flat-button (click)="viewDashboard()">
+          <mat-icon>dashboard</mat-icon>
+        Dashboard</button> 
+      </mat-list-item>
+
+
+        <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button (click)="createBatch()">
+              <mat-icon>work</mat-icon>
+             Create Batch</button>
+          </mat-list-item>
+
+          <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button (click)="fn_SearchClient()">
+              <mat-icon>work</mat-icon>
+            Create Sub Client</button>
+          </mat-list-item>
+
+          <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button (click)="fn_SearchClient()">
+              <mat-icon>work</mat-icon>
+            Create Test</button>
+          </mat-list-item>
+
+          <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button (click)="fn_SearchClient()">
+              <mat-icon>work</mat-icon>
+            Create Question Paper</button>
+          </mat-list-item>
+
+          <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button (click)="fn_SearchClient()">
+              <mat-icon>work</mat-icon>
+            Associate Candidate</button>
+          </mat-list-item>
+
+          <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button (click)="fn_SearchClient()">
+              <mat-icon>work</mat-icon>
+            Approve Candidate</button>
+          </mat-list-item>
+
+
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content >
+        <mat-toolbar color="primary">
+            <span>LTOCAS-PROJECT</span>
+          </mat-toolbar>   
+          <router-outlet></router-outlet>
+  </mat-sidenav-content>
+   
+ 
+</mat-sidenav-container>

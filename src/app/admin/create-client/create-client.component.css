@@ -1,0 +1,28 @@
+.navbar-brand{
+    color:white;
+}
+.navbar {
+    border-radius: 0px;
+}
+.login {
+    width: 40%;
+    margin: 16px auto;
+    font-size: 16px;
+  }
+  .login-header {
+    background: rgb(12, 77, 129);
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 0px ! important;
+  }
+.login-container {
+    background: #ebebeb;
+    padding: 20px;
+  }
+.btn {
+    margin-left: 42%;
+}

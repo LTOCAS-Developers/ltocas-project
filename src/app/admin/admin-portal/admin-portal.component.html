@@ -1,0 +1,55 @@
+<mat-sidenav-container id="sidenavContainer" fullscreen>
+  <mat-sidenav mode="side" #sidenav id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" opened>
+
+    <mat-list id="menus">
+      <mat-card class="clayton">
+        <mat-card-header>
+
+          <mat-card-title>
+            <p style="margin: 10px 16px 10px;">Admin Portal</p>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-list-item>
+        <button class="menu-item" routerLinkActive="active" (click)="viewDashboard()" mat-flat-button>
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button class="menu-item" routerLinkActive="active" routerLink="edit/0" mat-flat-button>
+          <mat-icon>work</mat-icon>
+          Add Client
+        </button>
+      </mat-list-item>
+      <nav>
+        <mat-list-item>
+          <button class="menu-item" mat-flat-button routerLinkActive="active" routerLink="list-client">
+            <mat-icon>work</mat-icon>
+            List Client
+          </button>
+        </mat-list-item>
+      </nav>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>LTOCAS-PROJECT</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <div class="lds-roller" *ngIf="showLoadingIndicator">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

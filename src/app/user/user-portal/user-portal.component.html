@@ -1,0 +1,65 @@
+
+
+<mat-sidenav-container id="sidenavContainer" fullscreen>
+  <mat-sidenav mode="side" #sidenav id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" opened>
+
+    <mat-list id="menus">
+      <mat-card class="clayton">
+        <mat-card-header>
+
+          <mat-card-title>
+            <p style="margin: 10px 16px 10px;">User Portal</p>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-list-item>
+        <button class="menu-item" routerLinkActive="active" (click)="viewDashboard()" mat-flat-button>
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button class="menu-item" routerLinkActive="active"mat-flat-button>
+          <mat-icon>work</mat-icon>
+          Search Batch and Associate
+        </button>
+      </mat-list-item>
+      <nav>
+        <mat-list-item>
+          <button class="menu-item" mat-flat-button (click)="fn_Setting()">
+            <mat-icon>work</mat-icon>
+            Take Test
+          </button>
+        </mat-list-item>
+      </nav>
+
+
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button (click)="fn_SearchClient()">
+          <mat-icon>work</mat-icon>
+          View Test
+        </button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button (click)="fn_SearchClient()">
+          <mat-icon>work</mat-icon>
+          Test Results
+        </button>
+      </mat-list-item>
+
+
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>LTOCAS-PROJECT</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

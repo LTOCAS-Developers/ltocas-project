@@ -1,0 +1,25 @@
+<h1>Our Clients</h1>
+<div class="form-group">
+  <input type="text" class="form-control"
+   placeholder="Search By Name" style="width:300px"
+    [(ngModel)]="searchTerm">
+</div>
+<div *ngFor="let client of filteredClients" (notifyDelete)="onDeleteNotification($event)">
+  <ul 
+  class="clients">
+    <li [class.selected]="client === selectedClients" 
+    >
+      <span class="badge">{{client.id}}</span>
+      <span>{{client.firstName}}</span>
+      <button class="btn btn-success btns" 
+       (click)="onSelect(client.id)">View</button>
+    </li>
+
+  </ul>
+
+</div>
+<div *ngIf="error">
+  {{ error }}
+</div>
+
+<router-outlet></router-outlet>

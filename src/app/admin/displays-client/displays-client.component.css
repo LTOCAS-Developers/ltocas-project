@@ -1,0 +1,48 @@
+.btn{
+    background-color: #405061;
+    float: right;
+    margin-top: -25px;
+    padding: 4px 26px;
+
+}
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  .display{
+      border:100px;
+  }
+
+  .panel-primary{
+    margin: 80px;
+  }
+
+  .panel-footer{
+    height: 50px;
+  }
+
+  p {
+    font-family: Lato;
+  }
+
+  .backlist{
+    margin-top: 0px;
+    float: left;
+  }
+
+  .viewnext{
+    margin-top: 0px;
+  }
+
+  .btn-success{
+    margin-top: 4px;
+    margin-left: 16px;
+  }
+  
+  .btn-danger{
+    margin-top: 4px;
+    margin-left: 46px;
+  }

@@ -1,0 +1,28 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+ .bg-primary {
+    background-color: #337ab7!important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-list-base {
+
+    padding-top: 0px  !important;
+}
+.mat-card {
+    padding: 7px !important ;
+    border-radius: 0px !important; 
+}
+
+.mat-drawer-inner-container {
+    overflow: unset !important;
+  }
+  .mat-drawer {
+    overflow-y: unset !important;
+  }
+  .clayton {
+    background: #3f51b5;
+      color: white;
+  }
