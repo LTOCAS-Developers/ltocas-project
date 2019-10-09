@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, of,throwError } from 'rxjs';
 import { Clients } from './admin/models.ts/models';
 import { catchError } from 'rxjs/operators';
+import { Batches } from './client/create-batch/batch';
 
  
 
@@ -64,5 +65,40 @@ deleteClient(id:number):Observable<void>{
   .pipe(catchError(this.handleError));
 }
  
+batchRegister(batch:Batches):Observable<Batches>{
+   
+  
+  console.log(batch);
+  console.log(new Clients());
+   return this._http.post<Batches>("http://localhost:8086/batch/save",batch,{
+     headers: new HttpHeaders({
+         'Content-Type': 'application/json'
+     })    
+ }).pipe(catchError(this.handleError));
 
+ 
+}
+getBatches(): Observable<Batches[]>{
+  return this._http.get<Batches[]>("http://localhost:8086/batch/list")
+  .pipe(catchError(this.handleError));
+ }
+ getBatch(id :number): Observable<Batches> {
+  return this._http.get<Batches>("http://localhost:8086/batch/get/"+id) 
+  .pipe(catchError(this.handleError));
+}
+
+deleteBatch(id:number):Observable<void>{
+  console.log(id)
+  return this._http.delete<void>("http://localhost:8086/batch/delete/"+id)  
+  .pipe(catchError(this.handleError));
+}
+
+updateBatch(batch: Batches): Observable<void> {
+  return this._http.put<void>("http://localhost:8086/batch/update"+ batch, {
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+      })
+  })
+      .pipe(catchError(this.handleError));
+}
 }

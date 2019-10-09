@@ -30,7 +30,7 @@
         <mat-list-item>
             <button 
             class="menu-item"
-              mat-flat-button (click)="createBatch()">
+              mat-flat-button routerLink="edit/0">
               <mat-icon>work</mat-icon>
              Create Batch</button>
           </mat-list-item>
@@ -54,7 +54,16 @@
           <mat-list-item>
             <button 
             class="menu-item"
-              mat-flat-button (click)="fn_SearchClient()">
+              mat-flat-button  routerLink="create-questions">
+              <mat-icon>work</mat-icon>
+            Create Questions</button>
+          </mat-list-item>
+
+
+          <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button  routerLink="create-question-papers">
               <mat-icon>work</mat-icon>
             Create Question Paper</button>
           </mat-list-item>

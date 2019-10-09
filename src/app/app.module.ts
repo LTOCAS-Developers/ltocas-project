@@ -19,13 +19,20 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialogue.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateClientCanDeactivateGuardService } from './admin/create-client-candeactivate-gaurd-service';
+import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
+
+import { CreateBatchComponent } from './client/create-batch/create-batch.component';
+import { CreateQuestionPaperComponent } from './client/create-question-paper/create-question-paper.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     ClientFilterPipe,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CreateQuestionsComponent,
+    CreateQuestionPaperComponent,
+    CreateBatchComponent
         ],
   imports: [
     BrowserModule,
