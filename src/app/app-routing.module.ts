@@ -20,7 +20,13 @@ import { ClientDetailsGuardService } from './admin/client-details.gaurd.service'
 import { CreateClientCanDeactivateGuardService } from './admin/create-client-candeactivate-gaurd-service';
 import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
 import { CreateQuestionPaperComponent } from './client/create-question-paper/create-question-paper.component';
+import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
+import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
+import { SearchBatchComponent } from './client/create-batch/search-batch/search-batch.component';
+
+
+
 
 const routes: Routes =[
   { path:'admin-loginpage',component:AdminLoginpageComponent},
@@ -49,10 +55,18 @@ const routes: Routes =[
   children:[
     {path:'',redirectTo:'client-dashboard',pathMatch:'full'},
     { path:'client-dashboard', component: ClientDashboardComponent},
-    { path:'edit/:id', component: CreateBatchComponent},
+    
+    { path:'batch', component: CreateBatchComponent,
+    children:[
+           { path :'list', component: ListBatchComponent},
+           { path :'search', component: SearchBatchComponent},   
+           { path :'new', component: NewBatchComponent},  
+  
+    ]},
     { path:'create-questions', component: CreateQuestionsComponent},
   { path:'create-question-papers', component: CreateQuestionPaperComponent}
   ]},
+
 
   {path:'user-portal',component:UserPortalComponent,children:[
     {path:'',redirectTo:'user-dashboard',pathMatch:'full'},

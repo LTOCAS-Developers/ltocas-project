@@ -69,7 +69,7 @@ export class CreateBatchComponent implements OnInit {
         })
 
       });
-      this.panelTitle = "Create Batch";
+      this.panelTitle = "Batch";
 
 
     }
