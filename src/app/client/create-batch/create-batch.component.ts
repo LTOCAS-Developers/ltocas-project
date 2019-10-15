@@ -90,7 +90,7 @@ export class CreateBatchComponent implements OnInit {
           (data: Batches) => {
             console.log(data)
             this.batchForm.reset();
-            this._router.navigate(["admin-portal/list-batch"]);
+            this._router.navigate(["client-portal/batch/list"]);
 
           },
           error => alert('Registration Failed!' + error)
@@ -102,7 +102,7 @@ export class CreateBatchComponent implements OnInit {
           () => {
             console.log(this.batchForm.value);
             this.batchForm.reset();
-            this._router.navigate(['admin-portal/list-batch']);
+            this._router.navigate(['client-portal/batch/list']);
           },
           (error: any) => console.log(error) 
         );

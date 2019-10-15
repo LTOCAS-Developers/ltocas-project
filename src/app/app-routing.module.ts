@@ -23,7 +23,11 @@ import { CreateQuestionPaperComponent } from './client/create-question-paper/cre
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
-import { SearchBatchComponent } from './client/create-batch/search-batch/search-batch.component';
+import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
+import { NewCourseComponent } from './client/course/new-course/new-course.component';
+import { ListCourseComponent } from './client/course/list-course/list-course.component';
+import { CourseComponent } from './client/course/course.component';
+
 
 
 
@@ -58,9 +62,16 @@ const routes: Routes =[
     
     { path:'batch', component: CreateBatchComponent,
     children:[
-           { path :'list', component: ListBatchComponent},
-           { path :'search', component: SearchBatchComponent},   
-           { path :'new', component: NewBatchComponent},  
+           { path :'list', component: ListBatchComponent,
+           resolve:{batcheslist:BatchDataResolverService}},
+           { path :'new', component: NewBatchComponent}, 
+  
+    ]},
+    { path:'course', component: CourseComponent,
+    children:[
+           { path :'list', component: ListCourseComponent,
+          //  resolve:{courseslist:CourseDataResolverService}},
+           { path :'new', component: NewCourseComponent}, 
   
     ]},
     { path:'create-questions', component: CreateQuestionsComponent},
@@ -86,3 +97,4 @@ export const routingComponents = [AdminLoginpageComponent,HomeComponent,
   ClientLoginpageComponent,UserLoginpageComponent,AdminPortalComponent,
   UserRegistrationpageComponent,PageNotFoundComponent,DisplaysClientComponent,ClientPortalComponent,AdminDashboardComponent,ListClientComponent,UserPortalComponent,UserDashboardComponent,ClientDashboardComponent,CreateClientComponent]
 
+ 

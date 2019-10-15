@@ -23,8 +23,12 @@ import { CreateBatchComponent } from './client/create-batch/create-batch.compone
 import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
 import { CreateQuestionPaperComponent } from './client/create-question-paper/create-question-paper.component';
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
-import { SearchBatchComponent } from './client/create-batch/search-batch/search-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
+import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
+import { CourseComponent } from './client/course/course.component';
+import { ListCourseComponent } from './client/course/list-course/list-course.component';
+import { NewCourseComponent } from './client/course/new-course/new-course.component';
+
 
 @NgModule({
   declarations: [
@@ -36,8 +40,11 @@ import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.com
     CreateQuestionsComponent,
     CreateQuestionPaperComponent,
     ListBatchComponent,
-    SearchBatchComponent,
-    NewBatchComponent
+    NewBatchComponent,
+    CourseComponent,
+    ListCourseComponent,
+    NewCourseComponent,
+    
         ],
   imports: [
     BrowserModule,
@@ -62,7 +69,8 @@ import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.com
     MatSortModule,
     NgbModule
   ],
-  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,CreateClientCanDeactivateGuardService],
+  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,
+    BatchDataResolverService,CreateClientCanDeactivateGuardService],
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
 

@@ -1,8 +1,4 @@
-export class Batches{
+export class Courses{
     id: number;
     name: string;
-    
 }
-
-
-
