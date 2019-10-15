@@ -21,10 +21,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateClientCanDeactivateGuardService } from './admin/create-client-candeactivate-gaurd-service';
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
 import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
-import { CreateQuestionPaperComponent } from './client/create-question-paper/create-question-paper.component';
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
 import { SearchBatchComponent } from './client/create-batch/search-batch/search-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
+import { QuestionPaperComponent } from './client/question-paper/question-paper.component';
+import { CreateQuestionpaperComponent } from './client/question-paper/create-questionpaper/create-questionpaper.component';
+import { ListQuestionpaperComponent } from './client/question-paper/list-questionpaper/list-questionpaper.component';
+import { SearchQuestionpaperComponent } from './client/question-paper/search-questionpaper/search-questionpaper.component';
+import { QuestionPaperDataResolverService } from './client/question-paper-resolved-data';
+
+
 
 @NgModule({
   declarations: [
@@ -34,10 +40,13 @@ import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.com
     ConfirmationDialogComponent,
     CreateBatchComponent,
     CreateQuestionsComponent,
-    CreateQuestionPaperComponent,
     ListBatchComponent,
     SearchBatchComponent,
-    NewBatchComponent
+    NewBatchComponent,
+    QuestionPaperComponent,
+    CreateQuestionpaperComponent,
+    ListQuestionpaperComponent,
+    SearchQuestionpaperComponent
         ],
   imports: [
     BrowserModule,
@@ -62,7 +71,7 @@ import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.com
     MatSortModule,
     NgbModule
   ],
-  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,CreateClientCanDeactivateGuardService],
+  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,CreateClientCanDeactivateGuardService,QuestionPaperDataResolverService],
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
 

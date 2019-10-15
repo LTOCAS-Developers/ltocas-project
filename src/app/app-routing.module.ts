@@ -18,13 +18,15 @@ import { ClientDataResolverService } from './admin/client-data-resolver.service'
 import { PageNotFoundComponent } from './page-not-found.component';
 import { ClientDetailsGuardService } from './admin/client-details.gaurd.service';
 import { CreateClientCanDeactivateGuardService } from './admin/create-client-candeactivate-gaurd-service';
-import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
-import { CreateQuestionPaperComponent } from './client/create-question-paper/create-question-paper.component';
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
 import { SearchBatchComponent } from './client/create-batch/search-batch/search-batch.component';
-
+import { ListQuestionpaperComponent } from './client/question-paper/list-questionpaper/list-questionpaper.component';
+import { CreateQuestionpaperComponent } from './client/question-paper/create-questionpaper/create-questionpaper.component';
+import { QuestionPaperComponent } from './client/question-paper/question-paper.component';
+import { SearchQuestionpaperComponent } from './client/question-paper/search-questionpaper/search-questionpaper.component';
+import { QuestionPaperDataResolverService } from './client/question-paper-resolved-data';
 
 
 
@@ -60,12 +62,20 @@ const routes: Routes =[
     children:[
            { path :'list', component: ListBatchComponent},
            { path :'search', component: SearchBatchComponent},   
-           { path :'new', component: NewBatchComponent},  
+           { path :'new', component: NewBatchComponent},    
   
     ]},
-    { path:'create-questions', component: CreateQuestionsComponent},
-  { path:'create-question-papers', component: CreateQuestionPaperComponent}
-  ]},
+    { path:'questionPaper', component: QuestionPaperComponent,
+    children:[
+           { path :'list', component: ListQuestionpaperComponent,
+           resolve:{questionpaperlist:QuestionPaperDataResolverService} },
+           { path :'search', component: SearchQuestionpaperComponent},   
+           { path :'create', component: CreateQuestionpaperComponent},  
+  
+    ]},
+  //   { path:'create-questions', component: CreateQuestionsComponent},
+  // { path:'create-question-papers', component: CreateQuestionPaperComponent}
+   ]},
 
 
   {path:'user-portal',component:UserPortalComponent,children:[
@@ -76,8 +86,8 @@ const routes: Routes =[
   {path:'',redirectTo:'/home-page',pathMatch:'full'},
   {path:'notFound',component:PageNotFoundComponent}
   
-];
-@NgModule({
+]
+  @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
