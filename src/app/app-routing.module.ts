@@ -21,7 +21,6 @@ import { CreateClientCanDeactivateGuardService } from './admin/create-client-can
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
-import { SearchBatchComponent } from './client/create-batch/search-batch/search-batch.component';
 import { ListQuestionpaperComponent } from './client/question-paper/list-questionpaper/list-questionpaper.component';
 import { CreateQuestionpaperComponent } from './client/question-paper/create-questionpaper/create-questionpaper.component';
 import { QuestionPaperComponent } from './client/question-paper/question-paper.component';
