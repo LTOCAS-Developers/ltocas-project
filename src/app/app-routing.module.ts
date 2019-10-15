@@ -27,6 +27,12 @@ import { CreateQuestionpaperComponent } from './client/question-paper/create-que
 import { QuestionPaperComponent } from './client/question-paper/question-paper.component';
 import { SearchQuestionpaperComponent } from './client/question-paper/search-questionpaper/search-questionpaper.component';
 import { QuestionPaperDataResolverService } from './client/question-paper-resolved-data';
+import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
+import { NewCourseComponent } from './client/course/new-course/new-course.component';
+import { ListCourseComponent } from './client/course/list-course/list-course.component';
+import { CourseComponent } from './client/course/course.component';
+
+
 
 
 
@@ -60,9 +66,16 @@ const routes: Routes =[
     
     { path:'batch', component: CreateBatchComponent,
     children:[
-           { path :'list', component: ListBatchComponent},
-           { path :'search', component: SearchBatchComponent},   
-           { path :'new', component: NewBatchComponent},    
+           { path :'list', component: ListBatchComponent,
+           resolve:{batcheslist:BatchDataResolverService}},
+           { path :'new', component: NewBatchComponent}, 
+  
+    ]},
+    { path:'course', component: CourseComponent,
+    children:[
+           { path :'list', component: ListCourseComponent},
+          //  resolve:{courseslist:CourseDataResolverService}},
+           { path :'new', component: NewCourseComponent}, 
   
     ]},
     { path:'questionPaper', component: QuestionPaperComponent,
@@ -96,3 +109,4 @@ export const routingComponents = [AdminLoginpageComponent,HomeComponent,
   ClientLoginpageComponent,UserLoginpageComponent,AdminPortalComponent,
   UserRegistrationpageComponent,PageNotFoundComponent,DisplaysClientComponent,ClientPortalComponent,AdminDashboardComponent,ListClientComponent,UserPortalComponent,UserDashboardComponent,ClientDashboardComponent,CreateClientComponent]
 
+ 

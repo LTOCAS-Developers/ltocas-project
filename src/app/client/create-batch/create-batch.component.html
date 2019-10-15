@@ -1,25 +1,10 @@
 
-<button routerLink="list">list </button>
-<button routerLink="search">search</button>
-<button routerLink="new">new</button>
+<button  mat-flat-button  color="primary" routerLink="list">list </button>
+
+
+<button mat-flat-button  color="primary" routerLink="new">new</button>
 
 
 <router-outlet></router-outlet>
 
 
-
-<!-- 
-<div  class="login">
-  <h2 class="login-header">{{panelTitle}}</h2>
-  <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="batchForm">
-    <div class="form-group">
-      <label>Name</label>
-   <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-   <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-       <div *ngIf="f.name.errors.required">Name is required</div>
-   </div>
-    </div>
-    
-    <button class="btn btn-primary" type="submit">Register</button>
-  </form>
-</div> --> 

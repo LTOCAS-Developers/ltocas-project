@@ -22,13 +22,16 @@ import { CreateClientCanDeactivateGuardService } from './admin/create-client-can
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
 import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
-import { SearchBatchComponent } from './client/create-batch/search-batch/search-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
 import { QuestionPaperComponent } from './client/question-paper/question-paper.component';
 import { CreateQuestionpaperComponent } from './client/question-paper/create-questionpaper/create-questionpaper.component';
 import { ListQuestionpaperComponent } from './client/question-paper/list-questionpaper/list-questionpaper.component';
 import { SearchQuestionpaperComponent } from './client/question-paper/search-questionpaper/search-questionpaper.component';
 import { QuestionPaperDataResolverService } from './client/question-paper-resolved-data';
+import { CourseComponent } from './client/course/course.component';
+import { ListCourseComponent } from './client/course/list-course/list-course.component';
+import { NewCourseComponent } from './client/course/new-course/new-course.component';
+import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
 
 
 
@@ -47,6 +50,11 @@ import { QuestionPaperDataResolverService } from './client/question-paper-resolv
     CreateQuestionpaperComponent,
     ListQuestionpaperComponent,
     SearchQuestionpaperComponent
+    NewBatchComponent,
+    CourseComponent,
+    ListCourseComponent,
+    NewCourseComponent,
+    
         ],
   imports: [
     BrowserModule,
@@ -71,7 +79,8 @@ import { QuestionPaperDataResolverService } from './client/question-paper-resolv
     MatSortModule,
     NgbModule
   ],
-  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,CreateClientCanDeactivateGuardService,QuestionPaperDataResolverService],
+  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,CreateClientCanDeactivateGuardService,BatchDataResolverService,QuestionPaperDataResolverService],
+  
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
 
