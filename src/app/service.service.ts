@@ -5,6 +5,7 @@ import { Clients } from './admin/models.ts/models';
 import { catchError } from 'rxjs/operators';
 import { Batches } from './client/create-batch/batch';
 import { Courses } from './client/course/course';
+import {  Topics } from './client/topic/topic';
 
 
 
@@ -107,7 +108,6 @@ export class ServiceService {
 
 
     console.log(course);
-    console.log(new Courses());
     return this._http.post<Courses>("http://localhost:8086/course/save", course, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -115,5 +115,57 @@ export class ServiceService {
     }).pipe(catchError(this.handleError));
 
 
+  }
+
+  getCourses(): Observable<any> {
+    return this._http.get<any>("http://localhost:8086/course/list")
+      .pipe(catchError(this.handleError));
+  }
+
+  getCourse(id: number): Observable<Courses> {
+    return this._http.get<Courses>("http://localhost:8086/course/get/" + id)
+      .pipe(catchError(this.handleError));
+  }
+
+  updateCourse(course: Courses): Observable<void> {
+    return this._http.put<void>("http://localhost:8086/course/update" + course, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
+
+  topicRegister(topic: Topics): Observable<Topics> {
+
+
+    console.log(topic);
+    console.log(new Courses());
+    return this._http.post<Topics>("http://localhost:8086/questionsTopic/save", topic, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).pipe(catchError(this.handleError));
+
+
+  }
+
+  getTopics(): Observable<any> {
+    return this._http.get<any>("http://localhost:8086/questionsTopic/list")
+      .pipe(catchError(this.handleError));
+  }
+
+  getTopic(id: number): Observable<Topics> {
+    return this._http.get<Topics>("http://localhost:8086/questionsTopic/get/" + id)
+      .pipe(catchError(this.handleError));
+  }
+
+  updateTopic(topic: Topics): Observable<void> {
+    return this._http.put<void>("http://localhost:8086/questionsTopic/update" + topic, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
   }
 }

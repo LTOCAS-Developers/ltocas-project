@@ -1,31 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Courses } from '../course';
+import { Topics } from '../topic';
 
 @Component({
-  selector: 'app-list-course',
-  templateUrl: './list-course.component.html',
-  styleUrls: ['./list-course.component.css']
+  selector: 'app-list-topic',
+  templateUrl: './list-topic.component.html',
+  styleUrls: ['./list-topic.component.css']
 })
-export class ListCourseComponent implements OnInit {
+export class ListTopicComponent implements OnInit {
 
-  courses: Courses[] = [];
+  topics: Topics[] = [];
   error: string;
+
+  
 
   constructor(private service: ServiceService,
     private _route: ActivatedRoute,
     private _router: Router) {
 
-      const resolvedData: Courses[] | string = this._route.snapshot.data['courseslist'];
+      const resolvedData: Topics[] | string = this._route.snapshot.data['topicslist'];
     if (Array.isArray(resolvedData)) {
-      this.courses = resolvedData;
+      this.topics = resolvedData;
     }
     else {
       this.error = resolvedData;  
     }
-    this.courses = this._route.snapshot.data['courseslist'];
-     }
+    this.topics = this._route.snapshot.data['topicslist'];
+   }
+
+
 
   ngOnInit() {
   }

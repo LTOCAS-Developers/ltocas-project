@@ -27,6 +27,11 @@ import { BatchDataResolverService } from './client/create-batch/batch-data-resol
 import { NewCourseComponent } from './client/course/new-course/new-course.component';
 import { ListCourseComponent } from './client/course/list-course/list-course.component';
 import { CourseComponent } from './client/course/course.component';
+import { CourseDataResolverService } from './client/course/course-data-resolver.service';
+import { TopicComponent } from './client/topic/topic.component';
+import { TopicDataResolverService } from './client/topic/topic-data-resolver.service';
+import { ListTopicComponent } from './client/topic/list-topic/list-topic.component';
+import { NewTopicComponent } from './client/topic/new-topic/new-topic.component';
 
 
 
@@ -67,11 +72,20 @@ const routes: Routes =[
            { path :'new', component: NewBatchComponent}, 
   
     ]},
+    
     { path:'course', component: CourseComponent,
     children:[
-           { path :'list', component: ListCourseComponent,
-          //  resolve:{courseslist:CourseDataResolverService}},
-           { path :'new', component: NewCourseComponent}, 
+           { path :'courselist', component: ListCourseComponent,
+           resolve:{courseslist:CourseDataResolverService}},
+           { path :'addcourse', component: NewCourseComponent}, 
+  
+    ]},
+ 
+    { path:'topic', component: TopicComponent,
+    children:[
+           { path :'topicshow', component: ListTopicComponent,
+           resolve:{topicslist:TopicDataResolverService}},
+           { path :'addtopic', component: NewTopicComponent}, 
   
     ]},
     { path:'create-questions', component: CreateQuestionsComponent},
