@@ -32,7 +32,7 @@ export class NewBatchComponent implements OnInit {
       const id = +params.get('id');
       this.newBatchid = id;
       if (id === 0) {
-        this.newBatch();  
+        this.newBatch();
       }
       else {
         this.getBatch(id);
@@ -45,7 +45,7 @@ export class NewBatchComponent implements OnInit {
   }
 
   private newBatch() {
-    {
+    {  
       this.submitted = false;
       this.batchForm.reset();
       this.batchForm = this.fb.group({
@@ -76,7 +76,6 @@ export class NewBatchComponent implements OnInit {
         this.service.batchRegister(this.batchForm.value).subscribe(
           (data: Batches) => {
             console.log(data)
-            this.batchForm.reset();
             this._router.navigate(["client-portal/batch/list"]);
 
           },
@@ -91,7 +90,7 @@ export class NewBatchComponent implements OnInit {
             this.batchForm.reset();
             this._router.navigate(['client-portal/batch/list']);
           },
-          (error: any) => console.log(error) 
+          (error: any) => console.log(error)
         );
       }
     }

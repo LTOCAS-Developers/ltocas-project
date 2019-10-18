@@ -31,6 +31,11 @@ import { QuestionPaperDataResolverService } from './client/question-paper-resolv
 import { CourseComponent } from './client/course/course.component';
 import { ListCourseComponent } from './client/course/list-course/list-course.component';
 import { NewCourseComponent } from './client/course/new-course/new-course.component';
+import { CourseDataResolverService } from './client/course/course-data-resolver.service';
+import { TopicComponent } from './client/topic/topic.component';
+import { NewTopicComponent } from './client/topic/new-topic/new-topic.component';
+import { ListTopicComponent } from './client/topic/list-topic/list-topic.component';
+import { TopicDataResolverService } from './client/topic/topic-data-resolver.service';
 import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
    
     
@@ -52,6 +57,10 @@ import { BatchDataResolverService } from './client/create-batch/batch-data-resol
     CourseComponent,
     ListCourseComponent,
     NewCourseComponent,
+    TopicComponent,
+
+    NewTopicComponent,
+    ListTopicComponent,
     
         ],
   imports: [
@@ -77,7 +86,9 @@ import { BatchDataResolverService } from './client/create-batch/batch-data-resol
     MatSortModule,
     NgbModule
   ],
-  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,CreateClientCanDeactivateGuardService,BatchDataResolverService,QuestionPaperDataResolverService],
+  providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,
+    BatchDataResolverService,CreateClientCanDeactivateGuardService,CourseDataResolverService,
+    TopicDataResolverService],
   
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
