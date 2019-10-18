@@ -32,8 +32,8 @@ import { CourseComponent } from './client/course/course.component';
 import { ListCourseComponent } from './client/course/list-course/list-course.component';
 import { NewCourseComponent } from './client/course/new-course/new-course.component';
 import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
-
-
+   
+    
 
 @NgModule({
   declarations: [

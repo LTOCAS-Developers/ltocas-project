@@ -1,0 +1,10 @@
+input[type=text] {
+    width: 150px;
+    size: 50px;
+    
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+  
+  /* When the input field gets focus, change its width to 100% */
+  

@@ -38,7 +38,7 @@ import { CourseComponent } from './client/course/course.component';
 const routes: Routes =[
   { path:'admin-loginpage',component:AdminLoginpageComponent},
   { path:'client-loginpage',component:ClientLoginpageComponent},
-  { path:'user-loginpage',component:UserLoginpageComponent},
+  { path:'user-loginpage',component:UserLoginpageComponent},   
   {path:'home-page',component:HomeComponent},
   {path:'user-registrationpage',component:UserRegistrationpageComponent},
 
