@@ -18,7 +18,7 @@ export class CreateClientComponent implements OnInit {
     private _router: Router) { }
   clientForm: FormGroup;
   submitted = false;
-  panelTitle: string;
+  panelTitle: string;  
   demo: Clients;
   newClientid: number;
 
@@ -84,9 +84,9 @@ export class CreateClientComponent implements OnInit {
         clientPojo: this.fb.group({
           id: [0],
           companyName: ""
-        })
+        }
 
-      }, {
+         ) }, {
         validator: MustMatch('password', 'confirmPassword')
       });
       this.panelTitle = "Create Client";

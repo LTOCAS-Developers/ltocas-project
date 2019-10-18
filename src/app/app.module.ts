@@ -21,10 +21,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateClientCanDeactivateGuardService } from './admin/create-client-candeactivate-gaurd-service';
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
 import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
-import { CreateQuestionPaperComponent } from './client/create-question-paper/create-question-paper.component';
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
-import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
+import { QuestionPaperComponent } from './client/question-paper/question-paper.component';
+import { CreateQuestionpaperComponent } from './client/question-paper/create-questionpaper/create-questionpaper.component';
+import { ListQuestionpaperComponent } from './client/question-paper/list-questionpaper/list-questionpaper.component';
+import { SearchQuestionpaperComponent } from './client/question-paper/search-questionpaper/search-questionpaper.component';
+import { QuestionPaperDataResolverService } from './client/question-paper-resolved-data';
 import { CourseComponent } from './client/course/course.component';
 import { ListCourseComponent } from './client/course/list-course/list-course.component';
 import { NewCourseComponent } from './client/course/new-course/new-course.component';
@@ -33,6 +36,8 @@ import { TopicComponent } from './client/topic/topic.component';
 import { NewTopicComponent } from './client/topic/new-topic/new-topic.component';
 import { ListTopicComponent } from './client/topic/list-topic/list-topic.component';
 import { TopicDataResolverService } from './client/topic/topic-data-resolver.service';
+import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
+
 
 
 @NgModule({
@@ -43,9 +48,12 @@ import { TopicDataResolverService } from './client/topic/topic-data-resolver.ser
     ConfirmationDialogComponent,
     CreateBatchComponent,
     CreateQuestionsComponent,
-    CreateQuestionPaperComponent,
     ListBatchComponent,
     NewBatchComponent,
+    QuestionPaperComponent,
+    CreateQuestionpaperComponent,
+    ListQuestionpaperComponent,
+    SearchQuestionpaperComponent,
     CourseComponent,
     ListCourseComponent,
     NewCourseComponent,
@@ -81,6 +89,7 @@ import { TopicDataResolverService } from './client/topic/topic-data-resolver.ser
   providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,
     BatchDataResolverService,CreateClientCanDeactivateGuardService,CourseDataResolverService,
     TopicDataResolverService],
+  
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
 

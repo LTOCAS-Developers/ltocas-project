@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { Clients } from './admin/models.ts/models';
 import { catchError } from 'rxjs/operators';
 import { Batches } from './client/create-batch/batch';
+import { questionPaper } from './client/question-paper/create-questionpaper/questionpaper';
 import { Courses } from './client/course/course';
 import {  Topics } from './client/topic/topic';
 
@@ -83,7 +84,43 @@ export class ServiceService {
   getBatches(): Observable<any> {
     return this._http.get<any>("http://localhost:8086/batch/list")
       .pipe(catchError(this.handleError));
-  }
+}
+getQuestionPaper(id:number):Observable<questionPaper>{
+  return this._http.get<questionPaper>("http://localhost:8086/questionPaper/get/"+id)
+  .pipe(catchError(this.handleError));
+}
+deleteQuestionPaper(id:number):Observable<void>{
+  console.log(id)
+  return this._http.delete<void>("http://localhost:8086/questionPaper/delete/"+id)  
+  .pipe(catchError(this.handleError));  
+}
+getQuestionPapers(): Observable<any>{
+  return this._http.get<questionPaper[]>('http://localhost:8086/questionPaper/list')
+  .pipe(catchError(this.handleError));
+ }
+ updateQuestionPaper(newQuestionPaper: questionPaper): Observable<void> {
+  return this._http.put<void>("http://localhost:8086/questionPaper/update"+ newQuestionPaper, {
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+      })
+  })
+      .pipe(catchError(this.handleError));
+}
+
+questionPaperCreate(newQuestionPaper:questionPaper):Observable<questionPaper>{
+   
+  
+  console.log(newQuestionPaper);
+  console.log(new questionPaper());
+   return this._http.post<questionPaper>("http://localhost:8086/questionPaper/save",newQuestionPaper,{
+     headers: new HttpHeaders({
+         'Content-Type': 'application/json'
+     })    
+ }).pipe(catchError(this.handleError));
+
+ 
+}
+  
   getBatch(id: number): Observable<Batches> {
     return this._http.get<Batches>("http://localhost:8086/batch/get/" + id)
       .pipe(catchError(this.handleError));
