@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Clients } from '../models.ts/models';
+import { Clients } from '../../models.ts/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
 import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialogue.service';

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { Clients } from './admin/models.ts/models';
+import { Clients } from './models.ts/models';
 import { catchError } from 'rxjs/operators';
 import { Batches } from './client/create-batch/batch';
 import { questionPaper } from './client/question-paper/create-questionpaper/questionpaper';
 import { Courses } from './client/course/course';
 import {  Topics } from './client/topic/topic';
+import { Question } from './models.ts/question';
 
 
 
@@ -205,4 +206,9 @@ questionPaperCreate(newQuestionPaper:questionPaper):Observable<questionPaper>{
     })
       .pipe(catchError(this.handleError));
   }
+  getQuestions(): Observable<any>{
+    return this._http.get<any>("http://localhost:8086/questions/getQuestions")
+    .pipe(catchError(this.handleError));
+  }
+ 
 }

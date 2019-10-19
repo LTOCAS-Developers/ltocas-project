@@ -54,7 +54,6 @@ editQuestionPaper(newquestionPaper:questionPaper){
 }
 private newQuestionpaper(){
   this.submitted=false;
-  this.questionPaperForm.reset();
   this.questionPaperForm=this.fb.group({
     name:['',Validators.required]
   })

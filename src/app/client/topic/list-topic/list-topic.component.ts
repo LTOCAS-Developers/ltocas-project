@@ -22,6 +22,7 @@ export class ListTopicComponent implements OnInit {
       const resolvedData: Topics[] | string = this._route.snapshot.data['topicslist'];
     if (Array.isArray(resolvedData)) {
       this.topics = resolvedData;
+      console.log(this.topics)
     }
     else {
       this.error = resolvedData;  

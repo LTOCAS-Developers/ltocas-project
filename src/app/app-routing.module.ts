@@ -35,6 +35,10 @@ import { TopicComponent } from './client/topic/topic.component';
 import { TopicDataResolverService } from './client/topic/topic-data-resolver.service';
 import { ListTopicComponent } from './client/topic/list-topic/list-topic.component';
 import { NewTopicComponent } from './client/topic/new-topic/new-topic.component';
+import { QuestionComponent } from './client/question/question.component';
+import { CreateQuestionsComponent } from './client/question/create-questions/create-questions.component';
+import { ListQuestionsComponent } from './client/question/list-questions/list-questions.component';
+import { QuestionsDataResolverService } from './client/question/questions-resolved-data';
 
 
 
@@ -99,8 +103,14 @@ const routes: Routes =[
            { path :'create', component: CreateQuestionpaperComponent},  
   
     ]},
-  //   { path:'create-questions', component: CreateQuestionsComponent},
-  // { path:'create-question-papers', component: CreateQuestionPaperComponent}
+    { path:'question', component: QuestionComponent,
+    children:[
+           { path :'list', component: ListQuestionsComponent,
+           resolve:{questionslist:QuestionsDataResolverService} },
+           { path :'create', component: CreateQuestionsComponent},  
+  
+    ]},
+ 
    ]},
 
 
