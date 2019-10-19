@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 import { MustMatch } from 'src/app/shared/password.validators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Clients } from '../models.ts/models';
+import { Clients } from '../../models.ts/models';
 
 @Component({
   selector: 'app-create-client',

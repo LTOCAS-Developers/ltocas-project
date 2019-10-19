@@ -1,5 +1,5 @@
 import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
-import { Clients } from './models.ts/models';
+import { Clients } from '../models.ts/models';
 import { Observable,of } from 'rxjs';
 import { ServiceService } from '../service.service';
 import { Injectable } from '@angular/core';

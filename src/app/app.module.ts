@@ -20,7 +20,7 @@ import { ConfirmationDialogService } from './confirmation-dialog/confirmation-di
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateClientCanDeactivateGuardService } from './admin/create-client-candeactivate-gaurd-service';
 import { CreateBatchComponent } from './client/create-batch/create-batch.component';
-import { CreateQuestionsComponent } from './client/create-questions/create-questions.component';
+import { CreateQuestionsComponent } from './client/question/create-questions/create-questions.component';
 import { ListBatchComponent } from './client/create-batch/list-batch/list-batch.component';
 import { NewBatchComponent } from './client/create-batch/new-batch/new-batch.component';
 import { QuestionPaperComponent } from './client/question-paper/question-paper.component';
@@ -37,6 +37,9 @@ import { NewTopicComponent } from './client/topic/new-topic/new-topic.component'
 import { ListTopicComponent } from './client/topic/list-topic/list-topic.component';
 import { TopicDataResolverService } from './client/topic/topic-data-resolver.service';
 import { BatchDataResolverService } from './client/create-batch/batch-data-resolver.service';
+import { QuestionComponent } from './client/question/question.component';
+import { ListQuestionsComponent } from './client/question/list-questions/list-questions.component';
+import { QuestionsDataResolverService } from './client/question/questions-resolved-data';
    
     
 
@@ -61,6 +64,8 @@ import { BatchDataResolverService } from './client/create-batch/batch-data-resol
 
     NewTopicComponent,
     ListTopicComponent,
+    QuestionComponent,
+    ListQuestionsComponent,
     
         ],
   imports: [
@@ -87,8 +92,8 @@ import { BatchDataResolverService } from './client/create-batch/batch-data-resol
     NgbModule
   ],
   providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,
-    BatchDataResolverService,CreateClientCanDeactivateGuardService,CourseDataResolverService,
-    TopicDataResolverService],
+    BatchDataResolverService,QuestionPaperDataResolverService,CreateClientCanDeactivateGuardService,CourseDataResolverService,
+    TopicDataResolverService,QuestionsDataResolverService],
   
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
