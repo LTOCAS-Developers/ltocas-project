@@ -1,0 +1,127 @@
+/* Global Styles */
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+    text-align: center;
+  }
+  h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+  body {
+    margin: 2em;
+  }
+  body, input[text], button {
+    color:white;
+    font-family: Cambria, Georgia;
+  }
+  a {
+    cursor: pointer;
+    cursor: hand;
+  }
+  button {
+    font-family: Arial;
+    background-color: #405061;  border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+  }
+  
+  /* Navigation link styles */
+  nav a {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  nav a:visited, a:link {
+    color: #607D8B;
+  }
+  nav a:hover {
+    color: #039be5;
+    background-color: #CFD8DC;
+  }
+  nav a.active {
+    color: #039be5;
+  }
+  
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .form-group{
+    margin: 20px;
+  }
+  /* HeroesComponent's private CSS styles */
+  .selected {
+    background-color: #CFD8DC !important;
+    color: white;
+  }
+  .clients {
+    margin: 0 0 2em 30px;
+    list-style-type: none;
+    padding: 0;
+    width: 92em;
+  }
+  .clients li {
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 3.8em;
+    border-radius: 4px;
+  }
+  .clients li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+  }
+  /* .clients li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  } */
+  .clients .text {
+    position: relative;
+    top: -3px;
+  }
+  .clients .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color:#405061;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 3.8em;
+    margin-right: .8em;
+    padding: 18px;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .btns{
+    float: right;
+    margin-top: 8px;
+    margin-right: 20px;  
+  }
+  
+  /*
+  Copyright Google LLC. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at http://angular.io/license
+  */

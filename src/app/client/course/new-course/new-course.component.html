@@ -1,0 +1,15 @@
+
+<div  class="login">
+    <h2 class="login-header">{{panelTitle}}</h2>
+    <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="courseForm">
+      <div class="form-group" style="width:300px">
+        <label>Course Name</label>
+     <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+     <div *ngIf="submitted && f.name.errors" class="invalid-feedback" >
+         <div *ngIf="f.name.errors.required">Course name is required</div>
+     </div>
+      </div>
+      
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </div>  

@@ -1,0 +1,32 @@
+ 
+<div  class="login">
+  <h2 class="login-header">{{panelTitle}}</h2>
+  <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="topicForm">
+    <div class="form-group" style="width:300px">
+      <label>Topic Name</label>
+   <input type="text" formControlName="topic" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.topic.errors }" />
+   <div *ngIf="submitted && f.topic.errors" class="invalid-feedback" >
+       <div *ngIf="f.topic.errors.required">Topic Name is required</div>
+   </div>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Add Topic</button>
+  </form>
+</div>  
+
+
+
+<!-- <div  class="login">
+  <h2 class="login-header">{{panelTitle}}</h2>
+  <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="topicForm">
+    <div class="form-group" style="width:300px">
+      <label>Name</label>
+   <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+   <div *ngIf="submitted && f.name.errors" class="invalid-feedback" >
+       <div *ngIf="f.name.errors.required">Name is required</div>
+   </div>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Register</button>
+  </form>
+</div>   -->
