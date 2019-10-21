@@ -39,6 +39,7 @@ import { QuestionComponent } from './client/question/question.component';
 import { CreateQuestionsComponent } from './client/question/create-questions/create-questions.component';
 import { ListQuestionsComponent } from './client/question/list-questions/list-questions.component';
 import { QuestionsDataResolverService } from './client/question/questions-resolved-data';
+import { DisplayQuestionPaperComponent } from './client/question-paper/display-question-paper/display-question-paper.component';
 
 
 
@@ -101,6 +102,9 @@ const routes: Routes =[
            resolve:{questionpaperlist:QuestionPaperDataResolverService} },
            { path :'search', component: SearchQuestionpaperComponent},   
            { path :'create', component: CreateQuestionpaperComponent},  
+           {path:":id",
+           component:DisplayQuestionPaperComponent,
+         }
   
     ]},
     { path:'question', component: QuestionComponent,
@@ -108,7 +112,7 @@ const routes: Routes =[
            { path :'list', component: ListQuestionsComponent,
            resolve:{questionslist:QuestionsDataResolverService} },
            { path :'create', component: CreateQuestionsComponent},  
-  
+
     ]},
  
    ]},
