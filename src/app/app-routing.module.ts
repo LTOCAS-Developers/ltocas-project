@@ -40,6 +40,7 @@ import { CreateQuestionsComponent } from './client/question/create-questions/cre
 import { ListQuestionsComponent } from './client/question/list-questions/list-questions.component';
 import { QuestionsDataResolverService } from './client/question/questions-resolved-data';
 import { DisplayQuestionPaperComponent } from './client/question-paper/display-question-paper/display-question-paper.component';
+import { QuestionPaperAssoComponent } from './client/question-paper/question-paper-asso/question-paper-asso.component';
 
 
 
@@ -104,7 +105,11 @@ const routes: Routes =[
            { path :'create', component: CreateQuestionpaperComponent},  
            {path:":id",
            component:DisplayQuestionPaperComponent,
-         }
+         },
+         { path :'asso/:id', component: QuestionPaperAssoComponent,
+         resolve:{courseList:CourseDataResolverService,topicList:TopicDataResolverService}
+      }  
+
   
     ]},
     { path:'question', component: QuestionComponent,

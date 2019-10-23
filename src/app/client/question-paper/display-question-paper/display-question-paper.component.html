@@ -20,7 +20,7 @@
             <div class="col-xs-6">
               : {{selectedQuestionPaper.name}}
             </div>
-            <button type="button" (click)="editClient1()" class="btn-success">Activate</button>
+            <button type="button" (click)="addQuestions(selectedQuestionPaper.questionPaperId)" class="btn-success">Add Questions</button>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
     <div class = "btnbackview">
       <button class="btn btn-primary  backlist" [routerLink]="['/questionPaper/list',{id:questionPaperId}]"
       queryParamsHandling="preserve" >Back to List</button>
-      <button class="btn btn-primary viewnext" (click)="viewNextClient()">View Next Client</button>
+      <button class="btn btn-primary viewnext" (click)="viewNextClient()">View Next QuestionPaper</button>
     </div>
     
   </div>

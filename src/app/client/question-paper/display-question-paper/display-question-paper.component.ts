@@ -28,5 +28,15 @@ private selectedQuestionPaper:questionPaper;
      );
     });
   }
+  showQuestions:boolean=true
+  addQuestions(selectedQuestionPaperId){
+    this._router.navigate(["client-portal/questionPaper/asso", selectedQuestionPaperId]);
+    console.log(selectedQuestionPaperId);
+
+
+
+
+
+  }
 
 }

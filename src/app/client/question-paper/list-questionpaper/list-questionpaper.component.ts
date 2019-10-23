@@ -28,7 +28,7 @@ export class ListQuestionpaperComponent implements OnInit {
    }
 
    onSelect(questionPaperId: number): void {
-    this._router.navigate(["admin-portal/clients", questionPaperId]);
+    this._router.navigate(["client-portal/questionPaper", questionPaperId]);
 
   }
    

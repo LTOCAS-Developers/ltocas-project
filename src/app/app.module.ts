@@ -41,6 +41,7 @@ import { QuestionComponent } from './client/question/question.component';
 import { ListQuestionsComponent } from './client/question/list-questions/list-questions.component';
 import { QuestionsDataResolverService } from './client/question/questions-resolved-data';
 import { DisplayQuestionPaperComponent } from './client/question-paper/display-question-paper/display-question-paper.component';
+import { QuestionPaperAssoComponent } from './client/question-paper/question-paper-asso/question-paper-asso.component';
    
     
 
@@ -68,6 +69,7 @@ import { DisplayQuestionPaperComponent } from './client/question-paper/display-q
     QuestionComponent,
     ListQuestionsComponent,
     DisplayQuestionPaperComponent,
+    QuestionPaperAssoComponent,
     
         ],
   imports: [

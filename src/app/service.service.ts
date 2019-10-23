@@ -8,6 +8,7 @@ import { questionPaper } from './client/question-paper/create-questionpaper/ques
 import { Courses } from './client/course/course';
 import {  Topics } from './client/topic/topic';
 import { Question } from './models.ts/question';
+import { CourseAndTopicIds } from './models.ts/CourseAndTopicIds';
 
 
 
@@ -47,7 +48,7 @@ export class ServiceService {
 
   }
   updateEmployee(client: Clients): Observable<void> {
-    return this._http.put<void>("http://localhost:3000/clientData/" + client.sno, client, {
+    return this._http.put<void>("http://localhost:8086/users/edit", client, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -210,5 +211,13 @@ questionPaperCreate(newQuestionPaper:questionPaper):Observable<questionPaper>{
     return this._http.get<any>("http://localhost:8086/questions/getQuestions")
     .pipe(catchError(this.handleError));
   }
- 
+  findQuestionsTopicByCourseId(courseId):Observable<any>{
+return this._http.get<any>("http://localhost:8086/questionsTopic/getbycourseid/"+courseId)
+  .pipe(catchError(this.handleError));
+  }
+  findQuestionsByCourseAndTopic(courseAndTopic:CourseAndTopicIds):Observable<any>{
+    return this._http.post<any>("http://localhost:8086/questions/getQuestionsByAsso",courseAndTopic)
+      .pipe(catchError(this.handleError));
+      }
+
 }

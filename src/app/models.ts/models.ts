@@ -12,6 +12,7 @@ export class Clients {
   public sno: number;
   public userTypePojo: userType;
   public clientPojo: client;
+  public id:number
 
 
 }
