@@ -9,6 +9,7 @@ import { Courses } from './client/course/course';
 import {  Topics } from './client/topic/topic';
 import { Question } from './models.ts/question';
 import { CourseAndTopicIds } from './models.ts/CourseAndTopicIds';
+import { QuesQuesPaperAsso } from './models.ts/quespaperasso';
 
 
 
@@ -218,6 +219,10 @@ return this._http.get<any>("http://localhost:8086/questionsTopic/getbycourseid/"
   findQuestionsByCourseAndTopic(courseAndTopic:CourseAndTopicIds):Observable<any>{
     return this._http.post<any>("http://localhost:8086/questions/getQuestionsByAsso",courseAndTopic)
       .pipe(catchError(this.handleError));
+      }
+      associateQuesQuesPaper(quesQuesPaperAsso:QuesQuesPaperAsso){
+        return this._http.post<any>("http://localhost:8086/questionsasso/createasso",quesQuesPaperAsso)
+        .pipe(catchError(this.handleError));
       }
 
 }

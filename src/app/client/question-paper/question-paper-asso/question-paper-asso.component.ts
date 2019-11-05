@@ -5,8 +5,7 @@ import { ServiceService } from 'src/app/service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Topics } from '../../topic/topic';
 import { CourseAndTopicIds } from 'src/app/models.ts/CourseAndTopicIds';
-import {MatListModule} from '@angular/material/list';
-import { Question } from 'src/app/models.ts/question';
+import { QuesQuesPaperAsso } from 'src/app/models.ts/quespaperasso';
 
 
 @Component({
@@ -22,11 +21,12 @@ export class QuestionPaperAssoComponent implements OnInit {
   questionsByCourseAndTopic:any[]=[];
   error:string;
   getQuestionPaperForm:FormGroup;
- private selectedCourse:number;
- private selectedTopicId:number;
+  private seletedQuestionsId:number[]=[];
+  private showTopic:boolean=false;
  private submitted: boolean;
  private courseTopicIds:CourseAndTopicIds;
  private courseAndTopicIds =new CourseAndTopicIds();
+ private quesQuesPaperAsso=new QuesQuesPaperAsso();
   constructor(private fb: FormBuilder,
     private service:ServiceService,
     private _router:Router,
@@ -59,8 +59,13 @@ this.getQuestionPaperForm=this.fb.group({
   topic:["",Validators.required]
 
 });
+this._route.paramMap.subscribe(params => {
+  this.quesQuesPaperAsso.questionPaperId = +params.get('id');
+})
 
   }
+
+
   onSubmit(){  
     this.submitted = true;
   // stop here if form is invalid
@@ -68,11 +73,12 @@ this.getQuestionPaperForm=this.fb.group({
     return;
   }
   
- this.courseAndTopicIds.courseId=this.selectedCourse;
- this.courseAndTopicIds.topicId=this.selectedTopicId;
+ this.courseAndTopicIds.courseId=this.selectedCourseId.value;
+ this.courseAndTopicIds.topicId=this.selectedTopicId.value;
   this.service.findQuestionsByCourseAndTopic(this.courseAndTopicIds).subscribe
   (
     (questions) => {this.questionsByCourseAndTopic=questions as any;
+
     }
 
   );
@@ -81,13 +87,44 @@ this.getQuestionPaperForm=this.fb.group({
   
   get f() { return this.getQuestionPaperForm.controls; }
 
-  getTopicById(){
-this.service.findQuestionsTopicByCourseId(this.selectedCourse).subscribe(
-  (data)=> {this.selectedTopics=data as Topics[];
-  }
-)
-console.log(this.selectedCourse)
 
+  getTopicById(event){
+    this.submitted = false;
+    
+    this.showTopic=true;
+    console.log(this.selectedCourseId.value);
+    if(this.selectedCourseId.value !=""){
+      this.service.findQuestionsTopicByCourseId(this.selectedCourseId.value).subscribe(
+        (data)=> {
+          this.selectedTopics=data as Topics[];
+          this.getQuestionPaperForm.controls['topic'].setValue("");
+          
+        }
+      )
+    }
+
+
+  }
+
+  getSelectedQuestionsId(qId){
+    this.quesQuesPaperAsso.questionsId.push(qId);
+    console.log(this.quesQuesPaperAsso);
+
+  }
+  associateQuesQuesPaper(){
+    this.service.associateQuesQuesPaper(this.quesQuesPaperAsso).subscribe(
+(data) => {
+  console.log(this.quesQuesPaperAsso)
+  console.log("helooo")
+
+}
+    );
+  }
+  get selectedCourseId(){
+    return this.getQuestionPaperForm.get("course");
+  }
+  get selectedTopicId(){
+    return this.getQuestionPaperForm.get("topic");
   }
   
 
