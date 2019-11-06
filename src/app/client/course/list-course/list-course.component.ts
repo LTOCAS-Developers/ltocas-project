@@ -30,5 +30,8 @@ export class ListCourseComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onSelect(CoursesId:Number){
+    console.log(+CoursesId);
+    this._router.navigate(['client-portal/course/'+CoursesId]);
+  }
 }

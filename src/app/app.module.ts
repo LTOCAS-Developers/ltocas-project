@@ -44,6 +44,8 @@ import { DisplayQuestionComponent } from './client/question/display-question/dis
 import { DisplayQuestionPaperComponent } from './client/question-paper/display-question-paper/display-question-paper.component';
 import { QuestionPaperAssoComponent } from './client/question-paper/question-paper-asso/question-paper-asso.component';
 
+import { DisplayCoursesComponent } from './client/course/display-courses/display-courses.component';
+
    
     
 
@@ -72,7 +74,9 @@ import { QuestionPaperAssoComponent } from './client/question-paper/question-pap
     ListQuestionsComponent,
     DisplayQuestionComponent,
     DisplayQuestionPaperComponent,
-    QuestionPaperAssoComponent ],
+    QuestionPaperAssoComponent,
+   
+    DisplayCoursesComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

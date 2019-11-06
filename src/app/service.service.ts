@@ -164,7 +164,7 @@ export class ServiceService {
   }
 
   getCourse(id: number): Observable<Courses> {
-    return this._http.get<Courses>("http://localhost:8086/course/get/" + id)
+    return this._http.get<Courses>("http://localhost:8086/course/getCourse/" + id)
       .pipe(catchError(this.handleError));
   }
 
@@ -175,6 +175,10 @@ export class ServiceService {
       })
     })
       .pipe(catchError(this.handleError));
+  }
+  deleteCourse(id:number):Observable<void>{
+    return this._http.delete<any>("http://localhost:8086/course/delete/"+id)
+    .pipe(catchError(this.handleError));
   }
 
   topicRegister(topic: Topics): Observable<Topics> {
