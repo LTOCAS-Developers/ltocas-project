@@ -3,9 +3,9 @@ import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/r
 import { Observable,of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {  catchError } from 'rxjs/operators';
-
 import { ServiceService } from 'src/app/service.service';
-import { Courses } from './course';
+import { Courses } from 'src/app/models.ts/course';
+
 
 
 @Injectable()

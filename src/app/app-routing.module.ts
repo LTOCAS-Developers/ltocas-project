@@ -1,3 +1,4 @@
+import { DisplayQuestionComponent } from './client/question/display-question/display-question.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLoginpageComponent } from './admin/admin-loginpage/admin-loginpage.component';
@@ -106,9 +107,11 @@ const routes: Routes =[
     { path:'question', component: QuestionComponent,
     children:[
            { path :'list', component: ListQuestionsComponent,
-           resolve:{questionslist:QuestionsDataResolverService} },
-           { path :'create', component: CreateQuestionsComponent},  
-  
+           resolve:{questionslist:QuestionsDataResolverService},
+           },
+           { path :'display/:id', component: DisplayQuestionComponent},
+           { path :'create/:id', component: CreateQuestionsComponent,
+           resolve:{courseslist:CourseDataResolverService,topicslist:TopicDataResolverService}} 
     ]},
  
    ]},

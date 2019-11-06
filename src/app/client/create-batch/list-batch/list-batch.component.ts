@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
-import { Batches } from '../batch';
+import { Batches } from '../../../models.ts/batch';
  
 
 @Component({
@@ -21,6 +21,7 @@ export class ListBatchComponent implements OnInit {
     private _router: Router) {
 
       const resolvedData: Batches[] | string = this._route.snapshot.data['batcheslist'];
+      console.log(resolvedData);
     if (Array.isArray(resolvedData)) {
       this.batches = resolvedData;
     }

@@ -40,6 +40,7 @@ import { BatchDataResolverService } from './client/create-batch/batch-data-resol
 import { QuestionComponent } from './client/question/question.component';
 import { ListQuestionsComponent } from './client/question/list-questions/list-questions.component';
 import { QuestionsDataResolverService } from './client/question/questions-resolved-data';
+import { DisplayQuestionComponent } from './client/question/display-question/display-question.component';
    
     
 
@@ -66,6 +67,7 @@ import { QuestionsDataResolverService } from './client/question/questions-resolv
     ListTopicComponent,
     QuestionComponent,
     ListQuestionsComponent,
+    DisplayQuestionComponent,
     
         ],
   imports: [

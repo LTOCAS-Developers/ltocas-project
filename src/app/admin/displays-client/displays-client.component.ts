@@ -32,7 +32,7 @@ export class DisplaysClientComponent implements OnInit {
     this.__route.paramMap.subscribe(params => {
       this._id =+params.get("id"); //to read the route parametre value in this we are getting id
      this.service.getClient(this._id).subscribe(
-       (client) => this.selectedClient =client,
+       (client) => this.selectedClient =client, 
        (err:any) => console.log(err)
      );
     });

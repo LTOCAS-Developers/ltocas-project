@@ -3,11 +3,11 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, of, throwError } from 'rxjs';
 import { Clients } from './models.ts/models';
 import { catchError } from 'rxjs/operators';
-import { Batches } from './client/create-batch/batch';
+import { Batches } from './models.ts/batch';
 import { questionPaper } from './client/question-paper/create-questionpaper/questionpaper';
-import { Courses } from './client/course/course';
-import {  Topics } from './client/topic/topic';
+import { Topics } from './models.ts/topic';
 import { Question } from './models.ts/question';
+import { Courses } from './models.ts/course';
 
 
 
@@ -85,43 +85,43 @@ export class ServiceService {
   getBatches(): Observable<any> {
     return this._http.get<any>("http://localhost:8086/batch/list")
       .pipe(catchError(this.handleError));
-}
-getQuestionPaper(id:number):Observable<questionPaper>{
-  return this._http.get<questionPaper>("http://localhost:8086/questionPaper/get/"+id)
-  .pipe(catchError(this.handleError));
-}
-deleteQuestionPaper(id:number):Observable<void>{
-  console.log(id)
-  return this._http.delete<void>("http://localhost:8086/questionPaper/delete/"+id)  
-  .pipe(catchError(this.handleError));  
-}
-getQuestionPapers(): Observable<any>{
-  return this._http.get<questionPaper[]>('http://localhost:8086/questionPaper/list')
-  .pipe(catchError(this.handleError));
- }
- updateQuestionPaper(newQuestionPaper: questionPaper): Observable<void> {
-  return this._http.put<void>("http://localhost:8086/questionPaper/update"+ newQuestionPaper, {
-      headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-      })
-  })
+  }
+  getQuestionPaper(id: number): Observable<questionPaper> {
+    return this._http.get<questionPaper>("http://localhost:8086/questionPaper/get/" + id)
       .pipe(catchError(this.handleError));
-}
+  }
+  deleteQuestionPaper(id: number): Observable<void> {
+    console.log(id)
+    return this._http.delete<void>("http://localhost:8086/questionPaper/delete/" + id)
+      .pipe(catchError(this.handleError));
+  }
+  getQuestionPapers(): Observable<any> {
+    return this._http.get<questionPaper[]>('http://localhost:8086/questionPaper/list')
+      .pipe(catchError(this.handleError));
+  }
+  updateQuestionPaper(newQuestionPaper: questionPaper): Observable<void> {
+    return this._http.put<void>("http://localhost:8086/questionPaper/update" + newQuestionPaper, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
 
-questionPaperCreate(newQuestionPaper:questionPaper):Observable<questionPaper>{
-   
-  
-  console.log(newQuestionPaper);
-  console.log(new questionPaper());
-   return this._http.post<questionPaper>("http://localhost:8086/questionPaper/save",newQuestionPaper,{
-     headers: new HttpHeaders({
-         'Content-Type': 'application/json'
-     })    
- }).pipe(catchError(this.handleError));
+  questionPaperCreate(newQuestionPaper: questionPaper): Observable<questionPaper> {
 
- 
-}
-  
+
+    console.log(newQuestionPaper);
+    console.log(new questionPaper());
+    return this._http.post<questionPaper>("http://localhost:8086/questionPaper/save", newQuestionPaper, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).pipe(catchError(this.handleError));
+
+
+  }
+
   getBatch(id: number): Observable<Batches> {
     return this._http.get<Batches>("http://localhost:8086/batch/get/" + id)
       .pipe(catchError(this.handleError));
@@ -206,9 +206,40 @@ questionPaperCreate(newQuestionPaper:questionPaper):Observable<questionPaper>{
     })
       .pipe(catchError(this.handleError));
   }
-  getQuestions(): Observable<any>{
+  getQuestions(): Observable<any> {
     return this._http.get<any>("http://localhost:8086/questions/getQuestions")
+      .pipe(catchError(this.handleError));
+  }
+
+  findQuestionsTopicByCourseId(courseId): Observable<any> {
+    return this._http.get<any>("http://localhost:8086/questionsTopic/getbycourseid/" + courseId)
+      .pipe(catchError(this.handleError));
+  }
+
+  createQuestions(question: Question): Observable<Question> {
+    return this._http.post<any>("http://localhost:8086/questions/createQuestion", question, {    
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).pipe(catchError(this.handleError));
+  }
+
+  getQuestionsById(questionId):Observable<any>{
+    return this._http.get("http://localhost:8086/questions/getQuestionsById/"+questionId)
     .pipe(catchError(this.handleError));
   }
- 
+
+  editQuestion(question: Question): Observable<void>{
+    return this._http.put<any>("http://localhost:8086/questions/editQuestions",question,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+  }
+
+  deleteQuestion(questionId):Observable<void>{
+    return this._http.delete<any>("http://localhost:8086/questions/deleteQuestion/"+questionId)
+    .pipe(catchError(this.handleError));
+  }
+  
 }

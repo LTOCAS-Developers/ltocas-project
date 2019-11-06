@@ -87,7 +87,7 @@ export class CreateClientComponent implements OnInit {
         }
 
          ) }, {
-        validator: MustMatch('password', 'confirmPassword')
+        validator: MustMatch('pass', 'cpass')
       });
       this.panelTitle = "Create Client";
 
@@ -108,7 +108,7 @@ export class CreateClientComponent implements OnInit {
 
         this.service.clientRegister(this.clientForm.value).subscribe(
           (data: Clients) => {
-            console.log(data)
+            console.log(this.clientForm.value)
             this.clientForm.reset();
             this._router.navigate(["admin-portal/list-client"]);
 

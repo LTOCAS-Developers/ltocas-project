@@ -1,12 +1,14 @@
 .btn{
     background-color: #405061;
     float: right;
-    margin-top: -25px;
+    margin-top: -15px;
     padding: 4px 26px;
 
 }
 
-
+.panel-heading{
+    padding: 18px;
+  }
 .selected {
     background-color: #CFD8DC !important;
     color: white;

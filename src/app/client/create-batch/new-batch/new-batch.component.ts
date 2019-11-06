@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Batches } from '../batch';
+import { Batches } from '../../../models.ts/batch';
 
 @Component({
   selector: 'app-new-batch',

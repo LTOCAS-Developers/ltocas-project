@@ -1,0 +1,65 @@
+
+<div class="panel panel-primary " *ngIf="selectedQuestion">
+  <div class="panel-heading">
+    <h3 class="panel-title">Question Details</h3>
+    <button class="btn btn-primary" (click)="editQuestion()">Edit</button>
+    <button class="btn btn-primary" (click)="openConfirmationDialog(selectedQuestion.questionNumber)">Delete</button>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">
+        <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-6">
+              Id
+            </div>
+            <div class="col-xs-6">
+              : {{selectedQuestion.questionNumber}}
+            </div>
+            <div class="col-xs-6">
+              Question
+            </div>
+            <div class="col-xs-6">
+              : {{selectedQuestion.questions}}
+            </div>
+            <div class="col-xs-6">
+              Option 1 </div>
+            <div class="col-xs-6">
+              : {{selectedQuestion.option1}}
+            </div>
+            <div class="col-xs-6">
+              Option 2 </div>
+            <div class="col-xs-6">
+              : {{selectedQuestion.option2}}
+            </div>
+            <div class="col-xs-6">
+              Option 3 </div>
+            <div class="col-xs-6">
+              : {{selectedQuestion.option3}}
+            </div>
+            <div class="col-xs-6">
+              Option 4 </div>
+            <div class="col-xs-6">
+              : {{selectedQuestion.option4}}
+            </div>
+            <div class="col-xs-6">
+              Answer
+            </div>
+            <div class="col-xs-6">
+              : {{selectedQuestion.answer}}
+            </div>
+            <button type="button" (click)="editClient1()" class="btn-success">Activate</button>
+            <button type="button" class="btn-danger">De-Activate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class = "btnbackview">
+      <button class="btn btn-primary  backlist" [routerLink]="['/client-portal/question/list',{id:selectedClientId}]"
+      queryParamsHandling="preserve" >Back to List</button>
+      <button class="btn btn-primary viewnext" (click)="viewNextQuestion()">View Next Client</button>
+    </div>
+    
+  </div>

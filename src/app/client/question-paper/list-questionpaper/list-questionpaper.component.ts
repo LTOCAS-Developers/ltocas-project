@@ -27,11 +27,12 @@ export class ListQuestionpaperComponent implements OnInit {
      
    }
    
-   error:string; 
-listQuestionPaper:questionPaper[]=[]
-  ngOnInit() {
-   
+    error:string; 
+    listQuestionPaper:questionPaper[]=[]
 
-  }
+    ngOnInit() {
+    }
 
 }
+
+

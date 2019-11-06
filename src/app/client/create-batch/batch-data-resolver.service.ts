@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import {  catchError } from 'rxjs/operators';
 
 import { ServiceService } from 'src/app/service.service';
-import { Batches } from './batch';
+import { Batches } from '../../models.ts/batch';
 
 @Injectable()
 export class BatchDataResolverService implements Resolve<Batches[] | string>{

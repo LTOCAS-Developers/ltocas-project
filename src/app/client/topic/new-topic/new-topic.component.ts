@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Topics } from '../topic';
+import { Topics } from '../../../models.ts/topic';
 
 @Component({
   selector: 'app-new-topic',

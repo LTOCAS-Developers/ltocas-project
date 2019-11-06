@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import {  catchError } from 'rxjs/operators';
 
 import { ServiceService } from 'src/app/service.service';
-import { Topics } from './topic';
+import { Topics } from '../../models.ts/topic';
 
 
 @Injectable()

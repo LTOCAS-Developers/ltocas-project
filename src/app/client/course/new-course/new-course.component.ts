@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Courses } from '../course';
+import { Courses } from 'src/app/models.ts/course';
+
+
 
 @Component({
   selector: 'app-new-course',

@@ -1,27 +1,43 @@
 <div class="login">
-  <h2 class="login-header">Create Question Paper</h2>
+  <h2 class="login-header">Create Question</h2>
   <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="createQuestions">
 
-    <div class="form-group">
-        <label>Choose Course</label>
-        <select class="form-control" formControlName="course" [class.is-invalid]="createQuestions.get('course').invalid &&
-        createQuestions.get('course').touched" >
-            <option value="select">Select</option>
-            <option value="Java">Java</option>
-            <option value="Net">.Net</option>
-            <option value="Angular">Angular 2+</option>
-            <option value="Cplus">C++</option>
+   
+     
+
+      <div class="form-group" formGroupName="coursePojo"> 
+          <label>Choose Course</label>
+          <select class="form-control" formControlName="id" [(ngModel)]="selectedCourseId"
+          [ngClass]="{ 'has-error': submitted && f.coursePojo.errors }" (change)="getTopicById()">
+           <option selected  [value] ="0">Select Course</option> 
+            <option value="coursePojo" *ngFor="let coursePojo of courses" [value]="coursePojo.id">
+                {{coursePojo.name}}
+            </option>
           </select>
-          <div *ngIf="createQuestions.get('course').invalid &&createQuestions.get('course').touched">
-            <small class="text-danger">select the option</small>
-          </div>
+          <div class="invalid-feedback" *ngIf="submitted && f.coursePojo.errors">
+            <div class="text-danger">select the course</div>
+          </div>  
+        </div> 
+  
+      <div class="form-group" formGroupName="questionsTopicPojo">
+        <label>Choose Topic</label>
+        <select class="form-control" formControlName="id" [(ngModel)]="selectedTopicId" 
+        [ngClass]="{ 'has-error': submitted && f.coursePojo.errors }">
+        <option  disabled value="">Select Topic</option>
+          <option  value="questionsTopicPojo" *ngFor="let questionsTopicPojo of selectedTopic" [value]="questionsTopicPojo.id" >
+              {{questionsTopicPojo.topic}}
+          </option>
+        </select>
+        <div class="invalid-feedback" *ngIf="submitted && f.coursePojo.errors">
+          <div class="text-danger">select the topic</div>
+        </div>
       </div>
 
     <div class="form-group">
       <label>Enter The Question</label>
-   <textarea  class="form-control" formControlName="question" [class.is-invalid]="createQuestions.get('question').invalid &&
-   createQuestions.get('question').touched"></textarea>
-   <div *ngIf="createQuestions.get('question').invalid &&createQuestions.get('question').touched">
+   <textarea  class="form-control" formControlName="questions" [class.is-invalid]="createQuestions.get('questions').invalid &&
+   createQuestions.get('questions').touched"></textarea>
+   <div *ngIf="createQuestions.get('questions').invalid &&createQuestions.get('questions').touched">
     <small class="text-danger">Enter The Question</small>
   </div>
   </div>
