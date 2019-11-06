@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import {  RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ClientFilterPipe } from './admin/clientFilter.pipe';
 import { ClientDataResolverService } from './admin/client-data-resolver.service';
@@ -89,6 +89,7 @@ import { QuestionPaperAssoComponent } from './client/question-paper/question-pap
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatCheckboxModule ,
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
