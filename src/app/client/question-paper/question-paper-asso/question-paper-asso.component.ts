@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Courses } from '../../course/course';
 import { ServiceService } from 'src/app/service.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Topics } from '../../topic/topic';
 import { CourseAndTopicIds } from 'src/app/models.ts/CourseAndTopicIds';
 import { QuesQuesPaperAsso } from 'src/app/models.ts/quespaperasso';
+import { Courses } from 'src/app/models.ts/course';
+import { Topics } from 'src/app/models.ts/topic';
 
 
 @Component({
