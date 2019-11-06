@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import {  RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ClientFilterPipe } from './admin/clientFilter.pipe';
 import { ClientDataResolverService } from './admin/client-data-resolver.service';
@@ -41,6 +41,9 @@ import { QuestionComponent } from './client/question/question.component';
 import { ListQuestionsComponent } from './client/question/list-questions/list-questions.component';
 import { QuestionsDataResolverService } from './client/question/questions-resolved-data';
 import { DisplayQuestionComponent } from './client/question/display-question/display-question.component';
+import { DisplayQuestionPaperComponent } from './client/question-paper/display-question-paper/display-question-paper.component';
+import { QuestionPaperAssoComponent } from './client/question-paper/question-paper-asso/question-paper-asso.component';
+
    
     
 
@@ -68,8 +71,8 @@ import { DisplayQuestionComponent } from './client/question/display-question/dis
     QuestionComponent,
     ListQuestionsComponent,
     DisplayQuestionComponent,
-    
-        ],
+    DisplayQuestionPaperComponent,
+    QuestionPaperAssoComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -87,6 +90,7 @@ import { DisplayQuestionComponent } from './client/question/display-question/dis
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatCheckboxModule ,
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,

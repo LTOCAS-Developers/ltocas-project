@@ -1,0 +1,36 @@
+<div class="panel panel-primary " *ngIf="selectedQuestionPaper">
+  <div class="panel-heading">
+    <h3 class="panel-title">QuestionPaper</h3>
+    <button class="btn btn-primary" (click)="editClient()">Edit</button>
+    <button class="btn btn-primary" (click)="openConfirmationDialog()">Delete</button>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">
+        <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-6">
+              Id
+            </div>
+            <div class="col-xs-6">
+              : {{selectedQuestionPaper.questionPaperId}}
+            </div>
+            <div class="col-xs-6">
+              Name </div>
+            <div class="col-xs-6">
+              : {{selectedQuestionPaper.name}}
+            </div>
+            <button type="button" (click)="addQuestions(selectedQuestionPaper.questionPaperId)" class="btn-success">Add Questions</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class = "btnbackview">
+      <button class="btn btn-primary  backlist" [routerLink]="['/questionPaper/list',{id:questionPaperId}]"
+      queryParamsHandling="preserve" >Back to List</button>
+      <button class="btn btn-primary viewnext" (click)="viewNextClient()">View Next QuestionPaper</button>
+    </div>
+    
+  </div>

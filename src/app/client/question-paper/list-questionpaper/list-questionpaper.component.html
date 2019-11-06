@@ -2,13 +2,10 @@
  <div *ngFor="let questionPaper of listQuestionPaper" (notifyDelete)="onDeleteNotification($event)">
   <ul class="clients">
     <li>
-        <span class="badge"> {{questionPaper.id}}</span>
+        <span class="badge"> {{questionPaper.questionPaperId}}</span>
       <span>{{questionPaper.name}}</span>
-      <button  type="button" class="btn btn-success btns" (click)="onSelect(questionPaper.id)">View</button>
-    </li>
+      <button  type="button" class="btn btn-success btns" (click)="onSelect(questionPaper.questionPaperId)">View</button>
+    </li>  
  </ul>
 </div>
 
-<!-- div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
-</div> -->

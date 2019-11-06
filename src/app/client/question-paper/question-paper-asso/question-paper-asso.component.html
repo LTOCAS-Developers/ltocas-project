@@ -1,0 +1,46 @@
+<div class="login">
+  <h2 class="login-header">Associate Questions with QuestionPaper</h2>
+  <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="getQuestionPaperForm">
+
+    <div class="form-group">
+      <label for="course" class="control-label">Choose Course</label>
+      <select for="course" id="course" class="form-control" formControlName="course"
+        [ngClass]="{ 'is-invalid': submitted && f.course.errors }" (change)="getTopicById($event)">
+        <option disabled value=""> Select a Course
+        </option>
+        <option value="course" *ngFor="let course of courses" [value]="course.id">
+          {{course.name}}
+        </option>
+      </select>
+      <!-- <span class="help-block" *ngIf="course.touched && course.errors?.questionValidate">
+        course is required </span> -->
+      <div *ngIf="submitted && f.course.errors?.required" class="invalid-feedback">
+        <div *ngIf="f.course.errors?.required ">Select a Course</div>
+      </div>
+    </div>
+
+    <div class="form-group" *ngIf="showTopic">
+      <label>Choose Topic</label>
+      <select class="form-control" formControlName="topic" [ngClass]="{ 'is-invalid': submitted && f.topic.errors }">
+        <option selected disabled value=""> Select a Topic
+        </option>
+        <option value="select" *ngFor="let topic of selectedTopics" [value]="topic.id">{{topic.topic}}</option>
+      </select>
+      <div *ngIf="submitted && f.topic.errors?.required" class="invalid-feedback">
+        <div *ngIf="f.topic.errors?.required">Select a Topic</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Get Questions</button>
+  </form>
+</div>
+<div *ngIf="showQuestions">
+  <h1>Questions</h1>
+  <mat-selection-list [(ngModel)]="selectedOptions" >
+    <mat-list-option  [value]="question.questionNumber"  *ngFor="let question of questionsByCourseAndTopic; let i =index"
+      (click)="getSelectedQuestionsId(question.questionNumber,i)">
+      {{i +1}} - {{question.questions}}
+    </mat-list-option>
+  </mat-selection-list>
+  <button class="btn btn-primary" [disabled]="disableAssociate" *ngIf="showAssociate"
+    (click)="associateQuesQuesPaper()">Associate</button>
+</div>

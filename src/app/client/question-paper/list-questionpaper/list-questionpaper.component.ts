@@ -26,6 +26,11 @@ export class ListQuestionpaperComponent implements OnInit {
     this.listQuestionPaper = this._route.snapshot.data['questionpaperlist'];
      
    }
+
+   onSelect(questionPaperId: number): void {
+    this._router.navigate(["client-portal/questionPaper", questionPaperId]);
+
+  }
    
     error:string; 
     listQuestionPaper:questionPaper[]=[]

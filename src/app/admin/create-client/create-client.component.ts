@@ -30,7 +30,17 @@ export class CreateClientComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       mobileNumber: ['', [Validators.required, Validators.minLength(10)]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
-      cpass: ['', [Validators.required]]
+      cpass: ['', [Validators.required]],
+      id:[0],
+      sno:[0],
+      userTypePojo: this.fb.group({
+        id: [0],
+        userType: ""
+      }),
+      clientPojo: this.fb.group({
+        id: [0],
+        companyName: ""
+      })
     });
 
 
@@ -39,6 +49,7 @@ export class CreateClientComponent implements OnInit {
       this.newClientid = id;
       if (id === 0) {
         this.newClient();
+        console.log(id)
       }
       else {
         this.getClient(id);
@@ -63,7 +74,16 @@ export class CreateClientComponent implements OnInit {
       mobileNumber: client.mobileNumber,
       pass: client.pass,
       cpass: client.cpass,
-      id: client.sno
+      id: client.sno,
+      userTypePojo:{
+        id: client.userTypePojo.id,
+        userType: client.userTypePojo.userType
+      },
+      clientPojo:{
+        id: client.clientPojo.id,
+        companyName:client.clientPojo.companyName
+
+      }
     });
   }
   private newClient() {
@@ -85,43 +105,38 @@ export class CreateClientComponent implements OnInit {
           id: [0],
           companyName: ""
         }
-
          ) }, {
         validator: MustMatch('pass', 'cpass')
       });
       this.panelTitle = "Create Client";
-
-
     }
-
   }
   get f() { return this.clientForm.controls; }
 
   onSubmit(): void {
     this.submitted = true;
-    // stop here if form is invalid
+    
     if (this.clientForm.invalid) {
       return;
     }
     else {
       if (this.newClientid === 0) {
-
         this.service.clientRegister(this.clientForm.value).subscribe(
           (data: Clients) => {
             console.log(this.clientForm.value)
             this.clientForm.reset();
+            console.log(data)
             this._router.navigate(["admin-portal/list-client"]);
-
           },
           error => alert('Registration Failed!' + error)
         );
       }
       else {
         this.clientForm.value.id = this.newClientid;
+        console.log(this.clientForm.value);
         this.service.updateEmployee(this.clientForm.value).subscribe(
           () => {
             console.log(this.clientForm.value);
-            this.clientForm.reset();
             this._router.navigate(['admin-portal/list-client']);
           },
           (error: any) => console.log(error)

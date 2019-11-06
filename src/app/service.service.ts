@@ -8,6 +8,9 @@ import { questionPaper } from './client/question-paper/create-questionpaper/ques
 import { Topics } from './models.ts/topic';
 import { Question } from './models.ts/question';
 import { Courses } from './models.ts/course';
+import { CourseAndTopicIds } from './models.ts/CourseAndTopicIds';
+import { QuesQuesPaperAsso } from './models.ts/quespaperasso';
+
 
 
 
@@ -47,7 +50,7 @@ export class ServiceService {
 
   }
   updateEmployee(client: Clients): Observable<void> {
-    return this._http.put<void>("http://localhost:3000/clientData/" + client.sno, client, {
+    return this._http.put<void>("http://localhost:8086/users/edit", client, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -211,10 +214,7 @@ export class ServiceService {
       .pipe(catchError(this.handleError));
   }
 
-  findQuestionsTopicByCourseId(courseId): Observable<any> {
-    return this._http.get<any>("http://localhost:8086/questionsTopic/getbycourseid/" + courseId)
-      .pipe(catchError(this.handleError));
-  }
+
 
   createQuestions(question: Question): Observable<Question> {
     return this._http.post<any>("http://localhost:8086/questions/createQuestion", question, {    
@@ -241,5 +241,21 @@ export class ServiceService {
     return this._http.delete<any>("http://localhost:8086/questions/deleteQuestion/"+questionId)
     .pipe(catchError(this.handleError));
   }
-  
+
+  findQuestionsTopicByCourseId(courseId): Observable<any> {
+    return this._http.get<any>("http://localhost:8086/questionsTopic/getbycourseid/" + courseId)
+      .pipe(catchError(this.handleError));
+  }
+
+
+  findQuestionsByCourseAndTopic(courseAndTopic:CourseAndTopicIds):Observable<any>{
+    return this._http.post<any>("http://localhost:8086/questions/getQuestionsByAsso",courseAndTopic)
+      .pipe(catchError(this.handleError));
+      }
+      associateQuesQuesPaper(quesQuesPaperAsso:QuesQuesPaperAsso){
+        return this._http.post<any>("http://localhost:8086/questionsasso/createasso",quesQuesPaperAsso)
+        .pipe(catchError(this.handleError));
+      }
+
+
 }

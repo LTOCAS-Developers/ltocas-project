@@ -2,7 +2,7 @@
 <div  class="login">
   <h2 class="login-header">{{panelTitle}}</h2>
   <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="clientForm">
-    <div class="form-group">
+    <div class="form-group">  
       <label>Firstname</label>
    <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
