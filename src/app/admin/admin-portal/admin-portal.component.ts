@@ -27,7 +27,8 @@ export class AdminPortalComponent {
   }
 
 
-  constructor(private breakpointObserver: BreakpointObserver, public _router: Router, public _location: Location) {
+  constructor(private breakpointObserver: BreakpointObserver, public _router: Router, public _location: Location) 
+  {
     this._router.events.subscribe((routerEvent: Event) => {
       if (routerEvent instanceof NavigationStart) {
         this.showLoadingIndicator = true;

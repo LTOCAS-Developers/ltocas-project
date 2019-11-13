@@ -45,6 +45,11 @@ import { DisplayQuestionPaperComponent } from './client/question-paper/display-q
 import { QuestionPaperAssoComponent } from './client/question-paper/question-paper-asso/question-paper-asso.component';
 
 import { DisplayCoursesComponent } from './client/course/display-courses/display-courses.component';
+import { DisplayBatchComponent } from './client/create-batch/display-batch/display-batch.component';
+import { CreateExamComponent } from './client/create-batch/create-exam/create-exam.component';
+import { ListExamComponent } from './client/create-batch/create-exam/list-exam/list-exam.component';
+import { ViewExamComponent } from './client/create-batch/create-exam/view-exam/view-exam.component';
+import { CreateBatchCanDeactivateGuardService } from './client/create-batch/create-batch-candeactivate-gaurd-service';
 
    
     
@@ -75,8 +80,8 @@ import { DisplayCoursesComponent } from './client/course/display-courses/display
     DisplayQuestionComponent,
     DisplayQuestionPaperComponent,
     QuestionPaperAssoComponent,
-   
-    DisplayCoursesComponent ],
+    DisplayCoursesComponent,   
+    DisplayBatchComponent, CreateExamComponent, ListExamComponent, ViewExamComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -103,7 +108,7 @@ import { DisplayCoursesComponent } from './client/course/display-courses/display
   ],
   providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,
     BatchDataResolverService,QuestionPaperDataResolverService,CreateClientCanDeactivateGuardService,CourseDataResolverService,
-    TopicDataResolverService,QuestionsDataResolverService],
+    TopicDataResolverService,QuestionsDataResolverService,CreateBatchCanDeactivateGuardService],
   
   bootstrap: [AppComponent],
   entryComponents: [ ConfirmationDialogComponent ]
