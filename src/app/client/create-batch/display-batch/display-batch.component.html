@@ -1,0 +1,36 @@
+<div class="panel panel-primary" *ngIf="selectedBatch" >
+  <div class="panel-heading">
+    <h3 class="panel-title">Batch</h3>
+    <button class="btn btn-primary" (click)="editBatch()">Edit</button>
+    <button class="btn btn-primary" (click)="openConfirmationDialog()">Delete</button>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">
+        <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-6">
+              Id
+            </div>
+            <div class="col-xs-6">
+              : {{selectedBatch.id}}
+            </div>
+            <div class="col-xs-6">
+              Name </div>
+            <div class="col-xs-6">
+              : {{selectedBatch.name}}
+            </div>
+            <button type="button" color="white" (click)="addExams(selectedBatch.id)" mat-raised-button>Create Exams</button>
+            <button  mat-raised-button (click)="viewExams()" >Exams list</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class = "btnbackview">
+      <button class="btn btn-primary  backlist" [routerLink]="['/client-portal/batch/list',{id:selectedBatch.id}]"
+      queryParamsHandling="preserve" >Back To List</button>
+      <button class="btn btn-primary viewnext" (click)="viewNextBatch(selectedBatch.id)">Next Batch</button>
+    </div>    
+  </div>

@@ -92,8 +92,7 @@ export class QuestionPaperAssoComponent implements OnInit {
         this.selectedOptions=Object.assign([],  this.quesQuesPaperAsso.questionsId);
         if(questions!=null){
           this.showQuestions=true;
-
-        }
+       }
 
 
         }

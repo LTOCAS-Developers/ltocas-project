@@ -1,7 +1,6 @@
 export class Batches{
     id: number;
-    name: string;
-    
+    name: string;   
 }
 
 

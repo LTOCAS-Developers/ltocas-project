@@ -109,6 +109,16 @@
             <span>LTOCAS-PROJECT</span>
           </mat-toolbar>   
           <router-outlet></router-outlet>
+          <div class="lds-roller" *ngIf="showLoadingIndicator">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
   </mat-sidenav-content>
    
  

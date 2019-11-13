@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
 import { Clients } from './models.ts/models';
 import { catchError } from 'rxjs/operators';
 import { Batches } from './models.ts/batch';
@@ -22,6 +22,13 @@ export class ServiceService {
   constructor(private _http: HttpClient) { }
   _url = 'http://localhost:3000/userData';
   _url1 = 'http://localhost:8086/users/save';
+  public batchId=new BehaviorSubject<number>(null);
+  public batchIds: BehaviorSubject<Array<any>>=new BehaviorSubject([]);
+
+  changeBatchId(batchId:number){
+
+    this.batchId.next(batchId);
+  }
   private handleError(errorResponse: HttpErrorResponse) {
 
     if (errorResponse.error instanceof ErrorEvent) {
@@ -83,7 +90,7 @@ export class ServiceService {
       })
     }).pipe(catchError(this.handleError));
 
-
+   
   }
   getBatches(): Observable<any> {
     return this._http.get<any>("http://localhost:8086/batch/list")
@@ -137,14 +144,18 @@ export class ServiceService {
   }
 
   updateBatch(batch: Batches): Observable<void> {
-    return this._http.put<void>("http://localhost:8086/batch/update" + batch, {
+    console.log(batch);
+    return this._http.put<void>("http://localhost:8086/batch/edit" , batch, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     })
       .pipe(catchError(this.handleError));
   }
-
+  getBatchCount(){
+    return this._http.get<number>("http://localhost:8086/batch/getbatchcount")
+      .pipe(catchError(this.handleError));
+  }
   courseRegister(course: Courses): Observable<Courses> {
 
 
@@ -176,9 +187,9 @@ export class ServiceService {
     })
       .pipe(catchError(this.handleError));
   }
-  deleteCourse(id:number):Observable<void>{
-    return this._http.delete<any>("http://localhost:8086/course/delete/"+id)
-    .pipe(catchError(this.handleError));
+  deleteCourse(id: number): Observable<void> {
+    return this._http.delete<any>("http://localhost:8086/course/delete/" + id)
+      .pipe(catchError(this.handleError));
   }
 
   topicRegister(topic: Topics): Observable<Topics> {
@@ -221,29 +232,29 @@ export class ServiceService {
 
 
   createQuestions(question: Question): Observable<Question> {
-    return this._http.post<any>("http://localhost:8086/questions/createQuestion", question, {    
+    return this._http.post<any>("http://localhost:8086/questions/createQuestion", question, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     }).pipe(catchError(this.handleError));
   }
 
-  getQuestionsById(questionId):Observable<any>{
-    return this._http.get("http://localhost:8086/questions/getQuestionsById/"+questionId)
-    .pipe(catchError(this.handleError));
+  getQuestionsById(questionId): Observable<any> {
+    return this._http.get("http://localhost:8086/questions/getQuestionsById/" + questionId)
+      .pipe(catchError(this.handleError));
   }
 
-  editQuestion(question: Question): Observable<void>{
-    return this._http.put<any>("http://localhost:8086/questions/editQuestions",question,{
+  editQuestion(question: Question): Observable<void> {
+    return this._http.put<any>("http://localhost:8086/questions/editQuestions", question, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     })
   }
 
-  deleteQuestion(questionId):Observable<void>{
-    return this._http.delete<any>("http://localhost:8086/questions/deleteQuestion/"+questionId)
-    .pipe(catchError(this.handleError));
+  deleteQuestion(questionId): Observable<void> {
+    return this._http.delete<any>("http://localhost:8086/questions/deleteQuestion/" + questionId)
+      .pipe(catchError(this.handleError));
   }
 
   findQuestionsTopicByCourseId(courseId): Observable<any> {
@@ -252,14 +263,32 @@ export class ServiceService {
   }
 
 
-  findQuestionsByCourseAndTopic(courseAndTopic:CourseAndTopicIds):Observable<any>{
-    return this._http.post<any>("http://localhost:8086/questions/getQuestionsByAsso",courseAndTopic)
+  findQuestionsByCourseAndTopic(courseAndTopic: CourseAndTopicIds): Observable<any> {
+    return this._http.post<any>("http://localhost:8086/questions/getQuestionsByAsso", courseAndTopic)
       .pipe(catchError(this.handleError));
-      }
-      associateQuesQuesPaper(quesQuesPaperAsso:QuesQuesPaperAsso){
-        return this._http.post<any>("http://localhost:8086/questionsasso/createasso",quesQuesPaperAsso)
-        .pipe(catchError(this.handleError));
-      }
+  }
+  associateQuesQuesPaper(quesQuesPaperAsso: QuesQuesPaperAsso) {
+    return this._http.post<any>("http://localhost:8086/questionsasso/createasso", quesQuesPaperAsso)
+      .pipe(catchError(this.handleError));
+  }
+  createExam(exam): Observable<any> {
+    return this._http.post<any>("http://localhost:8086/exam/save", exam)
+      .pipe(catchError(this.handleError));
+  }
 
+  getExams(): Observable<any> {
+    return this._http.get<any>("http://localhost:8086/exam/list")
+      .pipe(catchError(this.handleError));
+  }
+  getExam(id:number): Observable<any> {
+    return this._http.get<any>("http://localhost:8086/exam/get/"+id)
+      .pipe(catchError(this.handleError));
+  }
+
+  getExamsByBatchId(id:number): Observable<any> {
+    return this._http.get<any>("http://localhost:8086/exam/getexamsbybatchid/"+id)
+      .pipe(catchError(this.handleError));
+  }
+  
 
 }

@@ -49,7 +49,7 @@ export class DisplaysClientComponent implements OnInit {
     .then((confirmed) =>      
    
    { if(confirmed){   
-     console.log(this.selectedClient.sno)
+     console.log(this.selectedClient.sno)    
       this.service.deleteClient(this._id).subscribe(
         () => this._router.navigateByUrl("admin-portal/list-client")
   )

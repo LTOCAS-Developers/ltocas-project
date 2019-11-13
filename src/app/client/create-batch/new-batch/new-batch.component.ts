@@ -20,6 +20,7 @@ export class NewBatchComponent implements OnInit {
   panelTitle: string;
   demo: Batches;
   newBatchid: number;
+  private _id:number;
 
   ngOnInit() {
 
@@ -29,21 +30,34 @@ export class NewBatchComponent implements OnInit {
 
 
     this._route.paramMap.subscribe(params => {
-      const id = +params.get('id');
-      this.newBatchid = id;
-      if (id === 0) {
+       this._id = +params.get('id');
+      if (this._id === 0) {
+        this.newBatchid = this._id ;
         this.newBatch();
       }
       else {
-        this.getBatch(id);
+        this.getBatch(this._id);
       }
     })
 
   }
   getBatch(id: number) {
-    throw new Error("Method not implemented.");
+    this.service.getBatch(id).subscribe(
+      (existingBatch: Batches) => {this.editBatch(existingBatch),
+      console.log(existingBatch)}
+      ,
+      (err: any) => console.log(err)
+    );
   }
 
+  private editBatch(batch:Batches){
+    this.panelTitle = "Edit Batch";
+    this.batchForm.patchValue({
+      name:batch.name
+    })
+
+
+  }
   private newBatch() {
     {  
       this.submitted = false;
@@ -57,10 +71,7 @@ export class NewBatchComponent implements OnInit {
 
       });
       this.panelTitle = "Batch";
-
-
     }
-
   }
   get f() { return this.batchForm.controls; }
 
@@ -83,10 +94,10 @@ export class NewBatchComponent implements OnInit {
         );
       }
       else {
-        this.batchForm.value.id = this.newBatchid;
+        this.batchForm.value.id = this._id;
+        console.log(this.batchForm.value)
         this.service.updateBatch(this.batchForm.value).subscribe(
           () => {
-            console.log(this.batchForm.value);
             this.batchForm.reset();
             this._router.navigate(['client-portal/batch/list']);
           },

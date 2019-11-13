@@ -89,9 +89,6 @@ h1 {
     background-color: #BBD8DC !important;
     color: white;
   }
-  .clients-success{
-    background-color: tomato;
-  }
   /* .clients li:hover {
     color: #607D8B;
     background-color: #DDD;
@@ -115,9 +112,6 @@ h1 {
     margin-right: .8em;
     padding: 18px;
     border-radius: 4px 0 0 4px;
-  }
-  .hasJustViewed{
-    background-color:#3395FF!important
   }
   
   .btns{

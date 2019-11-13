@@ -1,21 +1,16 @@
-<!-- <div class="login">
-    <h2 class="login-header">Batch Container</h2> -->
 
 
 
 <h1>Our Batches</h1>
-<!-- <div class="form-group">
-  <input type="text" class="form-control" placeholder="Search By Name" 
-  style="width:300px" [(ngModel)]="searchTerm" >
-</div> -->
 
-<div *ngFor="let batch of batches">
-  <ul class="clients">
+
+<div *ngFor="let batch of batches; let i =index" >
+  <ul  class="clients" >
     <li>
-      <span class="badge">{{batch.id}}</span>
+      <span [class.hasJustViewed]="selectedBatchId === batch.id" class="badge">{{i +1}}</span>
 
-      <span>{{batch.name}}</span>
-      <button class="btn btn-success btns" (click)="onSelect(batch.name)">View</button>
+      <span >{{batch.name}}</span>
+      <button [class.hasJustViewed]="selectedBatchId === batch.id" class="btn btn-success btns" (click)="onSelect(batch.id)">View</button>
     </li>
   </ul>
 </div>

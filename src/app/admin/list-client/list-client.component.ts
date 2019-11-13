@@ -59,6 +59,7 @@ export class ListClientComponent implements OnInit {
 
   }
   onDeleteNotification(id: number) {
+    console.log(id)
     const i = this.filteredClients.findIndex(c => c.sno === id);
     if (i != -1) {
       this.filteredClients.splice(i, 1);

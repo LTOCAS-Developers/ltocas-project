@@ -5,7 +5,7 @@ import { AdminLoginpageComponent } from './admin/admin-loginpage/admin-loginpage
 import { HomeComponent } from './home/home.component';
 import { ClientLoginpageComponent } from './client/client-loginpage/client-loginpage.component';
 import { UserLoginpageComponent } from './user/user-loginpage/user-loginpage.component';
-import{UserRegistrationpageComponent} from './user/user-registrationpage/user-registrationpage.component'
+import { UserRegistrationpageComponent } from './user/user-registrationpage/user-registrationpage.component'
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
 import { ClientPortalComponent } from './client/client-portal/client-portal.component';
 import { UserPortalComponent } from './user/user-portal/user-portal.component';
@@ -43,107 +43,151 @@ import { QuestionsDataResolverService } from './client/question/questions-resolv
 import { DisplayQuestionPaperComponent } from './client/question-paper/display-question-paper/display-question-paper.component';
 import { QuestionPaperAssoComponent } from './client/question-paper/question-paper-asso/question-paper-asso.component';
 import { DisplayCoursesComponent } from './client/course/display-courses/display-courses.component';
+import { DisplayBatchComponent } from './client/create-batch/display-batch/display-batch.component';
+import { CreateExamComponent } from './client/create-batch/create-exam/create-exam.component';
+import { ListExamComponent } from './client/create-batch/create-exam/list-exam/list-exam.component';
+import { ViewExamComponent } from './client/create-batch/create-exam/view-exam/view-exam.component';
+import { CreateBatchCanDeactivateGuardService } from './client/create-batch/create-batch-candeactivate-gaurd-service';
 
 
 
 
 
-const routes: Routes =[
-  { path:'admin-loginpage',component:AdminLoginpageComponent},
-  { path:'client-loginpage',component:ClientLoginpageComponent},
-  { path:'user-loginpage',component:UserLoginpageComponent},   
-  {path:'home-page',component:HomeComponent},
-  {path:'user-registrationpage',component:UserRegistrationpageComponent},
+const routes: Routes = [
+  { path: 'admin-loginpage', component: AdminLoginpageComponent },
+  { path: 'client-loginpage', component: ClientLoginpageComponent },
+  { path: 'user-loginpage', component: UserLoginpageComponent },
+  { path: 'home-page', component: HomeComponent },
+  { path: 'user-registrationpage', component: UserRegistrationpageComponent },
 
-  { path:'admin-portal',component:AdminPortalComponent,
-  children: [
-    { path:'edit/:id',component : CreateClientComponent,
-  canDeactivate:[CreateClientCanDeactivateGuardService]},
-  {path:'',redirectTo:'admin-dashboard',pathMatch:'full'},
-  { path:'admin-dashboard', component: AdminDashboardComponent},
-  { path:'list-client',
-   component: ListClientComponent,
-  resolve:{clientslist:ClientDataResolverService}},
-  {path:"clients/:id",
-  component:DisplaysClientComponent,
-  canActivate:[ClientDetailsGuardService],
-}
-]},
-
-
-  { path:'client-portal',component:ClientPortalComponent,
-  children:[
-    {path:'',redirectTo:'client-dashboard',pathMatch:'full'},
-    { path:'client-dashboard', component: ClientDashboardComponent},
-    
-    { path:'batch', component: CreateBatchComponent,
-    children:[
-           { path :'list', component: ListBatchComponent,
-           resolve:{batcheslist:BatchDataResolverService}},
-           { path :'new', component: NewBatchComponent}, 
-  
-    ]},
-    
-    { path:'course', component: CourseComponent,
-    children:[
-           { path :'courselist', component: ListCourseComponent,
-           resolve:{courseslist:CourseDataResolverService}},
-           { path :'addcourse', component: NewCourseComponent}, 
-           {path:":id",component:DisplayCoursesComponent,}
-  
-    ]},
- 
-    { path:'topic', component: TopicComponent,
-    children:[
-           { path :'topicshow', component: ListTopicComponent,
-           resolve:{topicslist:TopicDataResolverService}},
-           { path :'addtopic', component: NewTopicComponent}, 
-  
-    ]},
-    { path:'questionPaper', component: QuestionPaperComponent,
-    children:[
-           { path :'list', component: ListQuestionpaperComponent,
-           resolve:{questionpaperlist:QuestionPaperDataResolverService} },
-           { path :'search', component: SearchQuestionpaperComponent},   
-           { path :'create', component: CreateQuestionpaperComponent},  
-           {path:":id",component:DisplayQuestionPaperComponent,
-         },
-         { path :'asso/:id', component: QuestionPaperAssoComponent,
-         resolve:{courseList:CourseDataResolverService,topicList:TopicDataResolverService}
-      }  
-
-  
-    ]},
-    { path:'question', component: QuestionComponent,
-    children:[
-           { path :'list', component: ListQuestionsComponent,
-
-           resolve:{questionslist:QuestionsDataResolverService},
-           },
-           { path :'display/:id', component: DisplayQuestionComponent},
-           { path :'create/:id', component: CreateQuestionsComponent,
-           resolve:{courseslist:CourseDataResolverService,topicslist:TopicDataResolverService}} 
-    ]},
- 
-   ]},
+  {
+    path: 'admin-portal', component: AdminPortalComponent,
+    children: [
+      {
+        path: 'edit/:id', component: CreateClientComponent,
+        canDeactivate: [CreateClientCanDeactivateGuardService]
+      },
+      { path: '', redirectTo: 'admin-dashboard', pathMatch: 'full' },
+      { path: 'admin-dashboard', component: AdminDashboardComponent },
+      {
+        path: 'list-client',
+        component: ListClientComponent,
+        resolve: { clientslist: ClientDataResolverService }
+      },
+      {
+        path: "clients/:id",
+        component: DisplaysClientComponent,
+        canActivate: [ClientDetailsGuardService],
+      }
+    ]
+  },
 
 
-  {path:'user-portal',component:UserPortalComponent,children:[
-    {path:'',redirectTo:'user-dashboard',pathMatch:'full'},
-    { path:'user-dashboard', component: UserDashboardComponent}
-  ]},
+  {
+    path: 'client-portal', component: ClientPortalComponent,
+    children: [
+      { path: '', redirectTo: 'client-dashboard', pathMatch: 'full' },
+      { path: 'client-dashboard', component: ClientDashboardComponent },
 
-  {path:'',redirectTo:'/home-page',pathMatch:'full'},
-  {path:'notFound',component:PageNotFoundComponent}
-  
+      {
+        path: 'batch', component: CreateBatchComponent,
+        children: [
+          {
+            path: 'list', component: ListBatchComponent,
+            resolve: { batcheslist: BatchDataResolverService }
+          },
+          { path: 'edit/:id', component: NewBatchComponent,
+          canDeactivate: [CreateBatchCanDeactivateGuardService]
+        },
+          { path: 'examslist/:id', component: ListExamComponent },
+          { path: ':batchid', component: DisplayBatchComponent },
+          { path: ':batchid/createexam/:id', component: CreateExamComponent },
+          { path: 'exam/:id', component: ViewExamComponent },
+
+        ]
+      },
+
+      {
+        path: 'course', component: CourseComponent,
+        children: [
+          {
+            path: 'courselist', component: ListCourseComponent,
+            resolve: { courseslist: CourseDataResolverService }
+          },
+          { path: 'addcourse', component: NewCourseComponent },
+          { path: ":id", component: DisplayCoursesComponent, }
+
+        ]
+      },
+
+      {
+        path: 'topic', component: TopicComponent,
+        children: [
+          {
+            path: 'topicshow', component: ListTopicComponent,
+            resolve: { topicslist: TopicDataResolverService }
+          },
+          { path: 'addtopic', component: NewTopicComponent },
+
+        ]
+      },
+      {
+        path: 'questionPaper', component: QuestionPaperComponent,
+        children: [
+          {
+            path: 'list', component: ListQuestionpaperComponent,
+            resolve: { questionpaperlist: QuestionPaperDataResolverService }
+          },
+          { path: 'search', component: SearchQuestionpaperComponent },
+          { path: 'create', component: CreateQuestionpaperComponent },
+          {
+            path: ":id", component: DisplayQuestionPaperComponent,
+          },
+          {
+            path: 'asso/:id', component: QuestionPaperAssoComponent,
+            resolve: { courseList: CourseDataResolverService, topicList: TopicDataResolverService }
+          }
+
+
+        ]
+      },
+      {
+        path: 'question', component: QuestionComponent,
+        children: [
+          {
+            path: 'list', component: ListQuestionsComponent,
+
+            resolve: { questionslist: QuestionsDataResolverService },
+          },
+          { path: 'display/:id', component: DisplayQuestionComponent },
+          {
+            path: 'create/:id', component: CreateQuestionsComponent,
+            resolve: { courseslist: CourseDataResolverService, topicslist: TopicDataResolverService }
+          }
+        ]
+      },
+
+    ]
+  },
+
+
+  {
+    path: 'user-portal', component: UserPortalComponent, children: [
+      { path: '', redirectTo: 'user-dashboard', pathMatch: 'full' },
+      { path: 'user-dashboard', component: UserDashboardComponent }
+    ]
+  },
+
+  { path: '', redirectTo: '/home-page', pathMatch: 'full' },
+  { path: 'notFound', component: PageNotFoundComponent }
+
 ]
-  @NgModule({
+@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [AdminLoginpageComponent,HomeComponent,
-  ClientLoginpageComponent,UserLoginpageComponent,AdminPortalComponent,
-  UserRegistrationpageComponent,PageNotFoundComponent,DisplaysClientComponent,ClientPortalComponent,AdminDashboardComponent,ListClientComponent,UserPortalComponent,UserDashboardComponent,ClientDashboardComponent,CreateClientComponent]
+export const routingComponents = [AdminLoginpageComponent, HomeComponent,
+  ClientLoginpageComponent, UserLoginpageComponent, AdminPortalComponent,
+  UserRegistrationpageComponent, PageNotFoundComponent, DisplaysClientComponent, ClientPortalComponent, AdminDashboardComponent, ListClientComponent, UserPortalComponent, UserDashboardComponent, ClientDashboardComponent, CreateClientComponent]
 
- 

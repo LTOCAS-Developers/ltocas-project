@@ -1,0 +1,54 @@
+<div class="panel panel-primary" *ngIf="selectedExam" >
+  <div class="panel-heading">
+    <h3 class="panel-title">Exam</h3>
+    <button class="btn btn-primary" (click)="editBatch()">Edit</button>
+    <button class="btn btn-primary" (click)="openConfirmationDialog()">Delete</button>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">
+        <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-6">
+              Id
+            </div>
+            <div class="col-xs-6">
+              : {{selectedExam.id}}
+            </div>
+            <div class="col-xs-6">
+              Name </div>
+            <div class="col-xs-6">
+              : {{selectedExam.name}}
+            </div>
+            <div class="col-xs-6">
+             Associated Batch-Id </div>
+            <div class="col-xs-6">
+              : {{selectedExam.batchPojo.id}}
+            </div>
+            <div class="col-xs-6">
+              Associated Batch Name </div>
+             <div class="col-xs-6">
+               : {{selectedExam.batchPojo.name}}
+             </div>
+             <div class="col-xs-6">
+              Associated QuestionPaper-Id </div>
+             <div class="col-xs-6">
+               : {{selectedExam.questionPaperPojo.questionPaperId}}
+             </div>
+             <div class="col-xs-6">
+              Associated QuestionPaper Name </div>
+             <div class="col-xs-6">
+               : {{selectedExam.questionPaperPojo.name}}
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class = "btnbackview">
+      <button class="btn btn-primary  backlist" [routerLink]="['/questionPaper/list',{id:questionPaperId}]"
+      queryParamsHandling="preserve" >Back To List</button>
+      <button class="btn btn-primary viewnext" (click)="viewExamList()">Next Batch</button>
+    </div>    
+  </div>
