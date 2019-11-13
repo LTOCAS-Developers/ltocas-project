@@ -10,6 +10,7 @@ import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmat
   styleUrls: ['./display-courses.component.css']
 })
 export class DisplayCoursesComponent implements OnInit {
+ private viewedcourse: number;
   
 
   constructor(
@@ -22,6 +23,8 @@ export class DisplayCoursesComponent implements OnInit {
   private selectedCourse:Courses;
 
   ngOnInit() {
+    this.viewedcourse=+this._route.snapshot.paramMap.get('id');
+    console.log(this.viewedcourse)
     this._route.paramMap.subscribe(params => {
       this._id =+params.get("id"); //to read the route parametre value in this we are getting id
      this.Service.getCourse(this._id).subscribe(
@@ -48,7 +51,7 @@ export class DisplayCoursesComponent implements OnInit {
       this._router.navigate(["client-portal/course",this._id],
       {
         queryParamsHandling: 'preserve'
-      });
+      }); 
   }
 
   openConfirmationDialog(id:number){
@@ -62,7 +65,7 @@ export class DisplayCoursesComponent implements OnInit {
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
     
       
-    }
+    } 
     movetolist(){
       this._router.navigate(["client-portal/course/courselist"])
     }
