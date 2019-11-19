@@ -3,6 +3,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Topics } from '../../../models.ts/topic';
+import { Observable } from 'rxjs';
+import { Courses } from 'src/app/models.ts/course';
 
 @Component({
   selector: 'app-new-topic',
@@ -15,50 +17,65 @@ export class NewTopicComponent implements OnInit {
     private service: ServiceService,
     private _route: ActivatedRoute,
     private _router: Router) { }
-    topicForm: FormGroup;
+  topicForm: FormGroup;
   submitted = false;
   panelTitle: string;
-  demo: Topics;
+  private topic = new Topics();
   newTopicid: number;
-   
+  private courseId: number;
+  public courses: Courses[] = [];
+
   ngOnInit() {
-
-    this.topicForm = this.fb.group({
-      topic: ['', Validators.required]
+      this.topicForm = this.fb.group({
+      topic: ['', Validators.required],
+      course: ['', Validators.required]
     });
-
 
     this._route.paramMap.subscribe(params => {
       const id = +params.get('id');
       this.newTopicid = id;
       if (id === 0) {
-        this.newTopic();  
+        this.newTopic();
       }
       else {
         this.getQuestionTopic(id);
       }
     })
 
+    this.service.getCourses().subscribe(
+      (data) => {
+        this.courses = data as Courses[];
+        console.log(this.courses)
+      })
 
   }
   getQuestionTopic(id: number) {
-    throw new Error("Method not implemented.");
+    this.service.getTopic(id).subscribe(
+      (existingTopic: Topics) => {
+        this.editTopic(existingTopic),
+        console.log(existingTopic),
+        (err: any) => console.log(err)
+      }
+    )
   }
- 
 
-  
-  
+  private editTopic(topic: Topics) {
+    this.panelTitle = "Edit Topic";
+    console.log(topic.topic)
+    this.topicForm.patchValue({
+      name: topic.topic,
+      course: topic.coursePojo.id
+
+
+
+    })
+  }
   private newTopic() {
     {
       this.submitted = false;
-      this.topicForm.reset();
       this.topicForm = this.fb.group({
         topic: ['', Validators.required],
-        coursePojo: this.fb.group({
-          id: [0],
-          courseName: ""
-        })
-
+        course: ["", Validators.required]
       });
       this.panelTitle = "QuestionsTopics";
 
@@ -72,13 +89,14 @@ export class NewTopicComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.topicForm.invalid) {
-      return; 
+      return;
     }
     else {
+      this.topic.topic = this.topicForm.get('topic').value;
+      this.topic.coursePojo.id = this.topicForm.get('course').value
       if (this.newTopicid === 0) {
 
-
-        this.service.topicRegister(this.topicForm.value).subscribe(
+        this.service.topicRegister(this.topic).subscribe(
           (data: Topics) => {
             console.log(data)
             // this.topicForm.reset();
@@ -89,19 +107,20 @@ export class NewTopicComponent implements OnInit {
         );
       }
       else {
-        this.topicForm.value.id = this.newTopicid;
         this.service.updateTopic(this.topicForm.value).subscribe(
           () => {
             console.log(this.topicForm.value);
             // this.topicForm.reset();
             this._router.navigate(['client-portal/topic/topicshow']);
           },
-          (error: any) => console.log(error) 
+          (error: any) => console.log(error)
         );
       }
     }
+  }
 
-
+  moveToExamList() {
+    this._router.navigate(['client-portal/topic/topicshow'])
   }
 
 }

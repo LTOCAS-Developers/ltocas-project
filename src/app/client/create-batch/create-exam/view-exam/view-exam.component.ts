@@ -17,6 +17,7 @@ export class ViewExamComponent implements OnInit {
     private confirmationDialogService:ConfirmationDialogService) { }
     private _id:number;
     private selectedExam:Exam;
+    public updatedExamId:number[]=[];
 
   ngOnInit() {
     this.__route.paramMap.subscribe(params => {
@@ -30,9 +31,46 @@ export class ViewExamComponent implements OnInit {
      );
     });
     
+this.updatedExamId=JSON.parse(localStorage.getItem('updatedExamIds'))
+  
+console.log(this.updatedExamId)
+}
+  editExam(){
+    console.log("this is called")
+    this._router.navigate(["client-portal/batch/" + this._id +
+    "/createexam/0"]);    
+  }
+  viewExamList(examId:number){
+   // [routerLink]="['/client-portal/batch/examslist',{id:questionPaperId}]"
+    this._router.navigate(['client-portal/batch/examslist/',+this.selectedExam.batchPojo.id],{ queryParams: { examId: examId } });
 
   }
-  editBatch(){
+  NextBatch(examId){
+    let currentExamId:number=this.updatedExamId.indexOf(examId)
+if(this.updatedExamId.length-1 === currentExamId){
+  currentExamId=0
+}else{
+  currentExamId++;
+}
+console.log(currentExamId)
+console.log(this.updatedExamId[currentExamId])
+this._router.navigate(["client-portal/batch/exam/"+this.updatedExamId[currentExamId]])
+  }
+  public openConfirmationDialog() {
+    
+    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    .then((confirmed) =>      
+   
+   { if(confirmed){   
+      this.service.deleteExam(this._id).subscribe(
+        () => this._router.navigateByUrl("client-portal/batch/examslist/1")
+  )
+     }}
+    
+         )
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  
     
   }
+
 }

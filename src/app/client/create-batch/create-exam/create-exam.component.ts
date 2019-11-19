@@ -18,20 +18,19 @@ export class CreateExamComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute) { }
 
-    private questionPapers:[]=[];
-    private examForm:FormGroup;
-    private submitted:boolean=false;
-    private examData =new Exam();
-    private batchId:number;
+  private questionPapers: [] = [];
+  private examForm: FormGroup;
+  private submitted: boolean = false;
+  private examData = new Exam();
+  private batchId: number;
 
-    
 
   ngOnInit() {
 
     this._route.params.forEach((urlParams) => {
-      this.batchId= urlParams['batchid'];
-  });
-  console.log(this.batchId);
+      this.batchId = urlParams['batchid'];
+    });
+    console.log(this.batchId);
 
 
     this.examForm = this.fb.group({
@@ -40,44 +39,42 @@ export class CreateExamComponent implements OnInit {
     });
 
     this.service.getQuestionPapers().subscribe
-    (
-      (questionPapers) => {
-      this.questionPapers = questionPapers as any;
-      }
-    );
-    this.service.batchId.subscribe(batchId => this.batchId=batchId)
-    this.examData.batchPojo.id=this.batchId;
-    
-}
+      (
+        (questionPapers) => {
+          this.questionPapers = questionPapers as any;
+        }
+      );
+    this.examData.batchPojo.id = this.batchId;
 
-  get f(){
+  }
+
+  get f() {
     return this.examForm.controls;
   }
-  get selectedQuestionPaper(){
+  get selectedQuestionPaper() {
     return this.examForm.get('questionPaper');
   }
-  
-  onSubmit() {   
+
+  onSubmit() {
     this.submitted = true;
     if (this.examForm.invalid) {
       return;
     }
     else {
-    this.examData.name=this.examForm.get('examName').value;
-    this.examData.questionPaperPojo.questionPaperId= this.selectedQuestionPaper.value;
+      this.examData.name = this.examForm.get('examName').value;
+      this.examData.questionPaperPojo.questionPaperId = this.selectedQuestionPaper.value;
+      this.service.createExam(this.examData).subscribe(
+        (data: Exam) => {
+          console.log(data)
+          this._router.navigate(["/client-portal/batch/examslist/" + this.batchId]);
+        },
+        error => alert('Registration Failed!' + error)
 
-   
-    console.log(this.batchId)
-    console.log(this.examData.name)
-
-     this.service.createExam(this.examData).subscribe(
-
-
-     )
+      )
     }
 
   }
-  getBatchId(id:number){
+  getBatchId(id: number) {
     console.log(id);
     console.log("hello")
   }

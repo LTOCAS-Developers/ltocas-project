@@ -142,6 +142,7 @@ export class ServiceService {
     return this._http.delete<void>("http://localhost:8086/batch/delete/" + id)
       .pipe(catchError(this.handleError));
   }
+  
 
   updateBatch(batch: Batches): Observable<void> {
     console.log(batch);
@@ -157,9 +158,7 @@ export class ServiceService {
       .pipe(catchError(this.handleError));
   }
   courseRegister(course: Courses): Observable<Courses> {
-
-
-    console.log(course);
+        console.log(course);
     return this._http.post<Courses>("http://localhost:8086/course/save", course, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -169,8 +168,8 @@ export class ServiceService {
 
   }
 
-  getCourses(): Observable<any> {
-    return this._http.get<any>("http://localhost:8086/course/list")
+  getCourses(): Observable<Courses[]> {
+    return this._http.get<Courses[]>("http://localhost:8086/course/list")
       .pipe(catchError(this.handleError));
   }
 
@@ -180,7 +179,7 @@ export class ServiceService {
   }
 
   updateCourse(course: Courses): Observable<void> {
-    return this._http.put<void>("http://localhost:8086/course/update" + course, {
+    return this._http.put<void>("http://localhost:8086/course/edit" ,course, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -191,7 +190,7 @@ export class ServiceService {
     return this._http.delete<any>("http://localhost:8086/course/delete/" + id)
       .pipe(catchError(this.handleError));
   }
-
+  
   topicRegister(topic: Topics): Observable<Topics> {
 
 
@@ -205,6 +204,11 @@ export class ServiceService {
 
 
   }
+  deletetopic(id:number):Observable<void>{
+    return this._http.delete<any>("http://localhost:8086/questionsTopic/delete/" + id)
+    .pipe(catchError(this.handleError))
+  }
+
 
   getTopics(): Observable<any> {
     return this._http.get<any>("http://localhost:8086/questionsTopic/list")
@@ -289,6 +293,11 @@ export class ServiceService {
     return this._http.get<any>("http://localhost:8086/exam/getexamsbybatchid/"+id)
       .pipe(catchError(this.handleError));
   }
+  
+  deleteExam(id:number):Observable<void>{
+    return this._http.delete<void>("http://localhost:8086/exam/delete/"+id)
+    .pipe(catchError(this.handleError));
+  }  
   
 
 }

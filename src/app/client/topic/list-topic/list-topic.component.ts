@@ -12,6 +12,7 @@ export class ListTopicComponent implements OnInit {
 
   topics: Topics[] = [];
   error: string;
+  private selectedTopicId:number;
 
   
 
@@ -33,6 +34,12 @@ export class ListTopicComponent implements OnInit {
 
 
   ngOnInit() {
+      this.selectedTopicId=+this._route.snapshot.paramMap.get('id');
+      console.log("haiii")
+      console.log(this.selectedTopicId)
   }
-
+  onSelect(topicid:number){
+    console.log(topicid);
+    this._router.navigate(['client-portal/topic/viewtopic/'+topicid]);
+  }
 }

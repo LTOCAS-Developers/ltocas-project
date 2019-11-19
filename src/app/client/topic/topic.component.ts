@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -9,8 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicComponent implements OnInit {
 
-  constructor(){}
+  constructor(
+    public router:Router,
+    public route:ActivatedRoute
+  ){
+   
+  }
 
   ngOnInit(){}
- 
+  
+  backToList(){
+    this.router.navigate(['client-portal/topic/topicshow'])
+
+  }
 }

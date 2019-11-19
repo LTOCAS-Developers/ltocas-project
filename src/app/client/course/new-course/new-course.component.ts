@@ -48,11 +48,20 @@ export class NewCourseComponent implements OnInit {
 
   }
   getCourse(id: number) {
-    throw new Error("Method not implemented.");
+    this.service.getCourse(id).subscribe(
+      (existingCourse:Courses)=>
+      {this.editCourse(existingCourse)}
+    )
+  }
+  private editCourse(course:Courses){
+    this.courseForm.patchValue({
+      name:course.name
+    })
   }
 
+
   private newCourse() {
-    {
+    
       this.submitted = false;
       this.courseForm.reset();
       this.courseForm = this.fb.group({
@@ -63,7 +72,7 @@ export class NewCourseComponent implements OnInit {
 
     }
 
-  }
+  
   get f() { return this.courseForm.controls; }
 
   onSubmit(): void {

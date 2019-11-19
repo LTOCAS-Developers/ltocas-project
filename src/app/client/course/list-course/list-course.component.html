@@ -3,10 +3,10 @@
 <div *ngFor="let course of courses">
     <ul class="clients">
       <li>
-        <span class="badge color">{{course.id}}</span>
+        <span class="badge color" [class.hasviewed]="viewedId === course.id" >{{course.id}}</span>
   
         <span>{{course.name}}</span>
-        <button class="btn btn-success btns Bsuccess" (click)="onSelect(course.id)">View</button>
+        <button class="btn btn-success btns Bsuccess" (click)="onSelect(course.id)" [class.hasviewed]="viewedId === course.id">View</button>
       </li>
     </ul>
   </div>

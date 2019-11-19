@@ -1,8 +1,8 @@
 <div class="panel panel-primary" *ngIf="selectedExam" >
   <div class="panel-heading">
     <h3 class="panel-title">Exam</h3>
-    <button class="btn btn-primary" (click)="editBatch()">Edit</button>
-    <button class="btn btn-primary" (click)="openConfirmationDialog()">Delete</button>
+    <button class="btn btn-primary" (click)="editExam()">Edit</button>
+    <button class="btn btn-primary dangerexam" (click)="openConfirmationDialog()">Delete</button>
   </div>
   <div class="panel-body">
     <div class="col-xs-10">
@@ -47,8 +47,8 @@
   </div>
   <div class="panel-footer">
     <div class = "btnbackview">
-      <button class="btn btn-primary  backlist" [routerLink]="['/questionPaper/list',{id:questionPaperId}]"
-      queryParamsHandling="preserve" >Back To List</button>
-      <button class="btn btn-primary viewnext" (click)="viewExamList()">Next Batch</button>
+      <button class="btn btn-primary  backlist" (click)="viewExamList(selectedExam.id)" BackToExamList
+      queryParamsHandling="preserve">Back To List</button>
+      <button class="btn btn-primary viewnext"(click)="NextBatch(selectedExam.id)" >Next Batch</button>
     </div>    
   </div>

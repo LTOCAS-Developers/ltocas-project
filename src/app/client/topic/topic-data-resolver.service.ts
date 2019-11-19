@@ -22,4 +22,4 @@ export class TopicDataResolverService implements Resolve<Topics[] | string>{
         console.log(this.service.getTopics())
         }
 
-}
+} 

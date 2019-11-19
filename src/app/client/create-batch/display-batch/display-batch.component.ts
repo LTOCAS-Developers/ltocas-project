@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
 import { Batches } from 'src/app/models.ts/batch';
-import { BehaviorSubject } from 'rxjs';
 import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialogue.service';
 
 @Component({
@@ -72,7 +71,7 @@ export class DisplayBatchComponent implements OnInit {
   public openConfirmationDialog() {
     
     this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
-    .then((confirmed) =>      
+    .then( (confirmed) =>      
    
    { if(confirmed){   
       this.service.deleteBatch(this._id).subscribe(

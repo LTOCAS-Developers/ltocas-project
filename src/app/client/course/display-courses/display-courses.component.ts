@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
-import { Courses } from 'src/app/models.ts/course';
 import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialogue.service';
+import { Courses } from 'src/app/models.ts/course';
 
 @Component({
   selector: 'app-display-courses',
@@ -11,6 +11,7 @@ import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmat
 })
 export class DisplayCoursesComponent implements OnInit {
  private viewedcourse: number;
+
   
 
   constructor(
@@ -21,6 +22,7 @@ export class DisplayCoursesComponent implements OnInit {
   ) { }
   private _id:number;
   private selectedCourse:Courses;
+  public updatedCourseIds:number[]=[];
 
   ngOnInit() {
     this.viewedcourse=+this._route.snapshot.paramMap.get('id');
@@ -39,19 +41,21 @@ export class DisplayCoursesComponent implements OnInit {
     this._router.navigate(["client-portal/course/addcourse"]);
 }
   editCourse(){
-    this._router.navigate(["client-portal/course/addcourse"]);
+    this._router.navigate(["client-portal/course/addcourse/"+this._id]);
   }
-  viewNextCourse(){
-    if(this._id < 11){
-      this._id = this._id +1;
-      }
-      else{
-        this._id=1;
-      }
-      this._router.navigate(["client-portal/course",this._id],
-      {
-        queryParamsHandling: 'preserve'
-      }); 
+  viewNextCourse(id:number){
+    let currentCourseId:number=this.updatedCourseIds.indexOf(id)
+    if(this.updatedCourseIds.length-1 === currentCourseId){
+      currentCourseId=0
+    }
+    else{
+      currentCourseId++;
+    }
+    console.log(currentCourseId)
+    console.log("its is working")
+   // console.log(this.updatedCourseIds([currentCourseId]))
+      this._router.navigate(["client-portal/course",this._id])
+     
   }
 
   openConfirmationDialog(id:number){
@@ -66,7 +70,6 @@ export class DisplayCoursesComponent implements OnInit {
     
       
     } 
-    movetolist(){
-      this._router.navigate(["client-portal/course/courselist"])
-    }
+    
+    
 }

@@ -1,10 +1,17 @@
 .btn{
     background-color: #405061;
     float: right;
-    margin-top: -25px;
+    margin-top: -15px;
     padding: 4px 26px;
 
 }
+.dangerCourse{
+  background-color:red;}
+
+.panel-heading{
+    padding: 18px;
+    background-color: #3f51b5 !important;
+  }
 .selected {
     background-color: #CFD8DC !important;
     color: white;
@@ -18,7 +25,9 @@
 
   .panel-primary{
     margin: 80px;
+   
   }
+  
 
   .panel-footer{
     height: 50px;
@@ -33,7 +42,6 @@
     float: left;
   }
 
-
   .viewnext{
     margin-top: 0px;
   }
@@ -47,13 +55,4 @@
     margin-top: 4px;
     margin-left: 46px;
   }
-  button{
-    background-color: #405061;
-    color:white;
-    margin-right: 3rem;
-    margin-top: 0px;
-
-  }
- .dangerexam{
-   background-color:#CC0000
- }
+  

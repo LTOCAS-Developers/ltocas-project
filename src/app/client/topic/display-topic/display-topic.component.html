@@ -1,0 +1,44 @@
+<div class="panel panel-primary"  *ngIf="selectedTopic">
+  <div class="panel-heading">
+    <h3 class="panel-title">Topic</h3>
+    <button class="btn btn-primary" (click)="editTopic()">Edit</button>
+    <button class="btn btn-primary dangerCourse" (click)="openConfirmationDialog()">Delete</button>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">
+        <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-6">
+              Id
+            </div>
+            <div class="col-xs-6">
+              : {{selectedTopic.id}}
+            </div>
+            <div class="col-xs-6">
+              Name
+             </div>
+            <div class="col-xs-6">
+              : {{selectedTopic.topic}}
+            </div>
+            <div class="col-xs-6">
+               Course Name
+               </div>
+              <div class="col-xs-6">
+                : {{selectedTopic.coursePojo.name}}
+              </div>
+            <button type="button" (click)="addTopic()" class="btn-success">Add Topic</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class = "btnbackview">
+      <button class="btn btn-primary  backlist" [routerLink]="['/client-portal/topic/topicshow',{id:selectedTopic.id}]"  
+      queryparamshandling="merge" >Back to List</button>
+      <button class="btn btn-primary viewnext" (click)="viewNextCourse(selectedTopic.id)">View Next Topic</button>
+    </div>
+    
+  </div>
+ 

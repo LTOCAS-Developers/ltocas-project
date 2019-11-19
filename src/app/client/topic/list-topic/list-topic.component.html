@@ -1,13 +1,13 @@
 <h1>Our Topics</h1>
 
 
-<div *ngFor="let topic of topics">
+<div *ngFor="let topic of topics,let i =index">
   <ul class="clients">
     <li>
-      <span class="badge">{{topic.id}}</span>
+      <span class="badge" [class.hasJustViewed]="selectedTopicId === topic.id">{{i+1}}</span>
 
       <span>{{topic.topic}}</span>
-      <button class="btn btn-success btns" (click)="onSelect(topic.topic)">View</button>
+      <button class="btn btn-success btns" (click)="onSelect(topic.id)">View</button>
     </li>
   </ul>
 </div>

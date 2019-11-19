@@ -1,12 +1,13 @@
 <h1>Associate Exam with Batch  </h1>
-
+  
 <div  class="login" >
   <h2 class="login-header">Create Exam</h2>
   <form class="login-container" (ngSubmit)="onSubmit()" [formGroup]="examForm">
    <div class="form-group">  
-    <label>Name</label>
+    <label margin-right=3rem>Name</label>
  <input type="text" formControlName="examName" placeholder="Enter Exam Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.examName.errors }" />
  <div *ngIf="submitted && f.examName.errors" class="invalid-feedback">
+   
      <div *ngIf="f.examName.errors.required">Exam Name is required</div>
  </div>
   </div>
@@ -22,6 +23,6 @@
         <div *ngIf="f.questionPaper.errors?.required">Select a QuestionPaper</div>
       </div>
     </div>  
-    <button class="btn btn-primary" type="submit">Create</button>
+    <button class="btn btn-primary" type="submit" (ngSubmit)="moveToExamList()">Create</button>
   </form>
 </div>  

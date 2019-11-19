@@ -29,9 +29,10 @@
   </div>
   <div class="panel-footer">
     <div class = "btnbackview">
-      <button class="btn btn-primary  backlist"  (click)=movetolist() 
-      queryParamsHandling="preserve" >Back to List</button>
-      <button class="btn btn-primary viewnext" (click)="viewNextCourse()">View Next Course</button>
+      <button class="btn btn-primary  backlist" [routerLink]="['/client-portal/course/courselist',{id:selectedCourse.id}]"  
+      queryparamshandling="merge" >Back to List</button>
+      <button class="btn btn-primary viewnext" (click)="viewNextCourse(selectedCourse.id)">View Next Course</button>
     </div>
     
   </div>
+ 

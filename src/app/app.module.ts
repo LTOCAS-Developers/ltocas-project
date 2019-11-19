@@ -2,9 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CustomMaterialModule } from './core/material.module';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {  RouterModule } from '@angular/router';
@@ -31,7 +28,6 @@ import { QuestionPaperDataResolverService } from './client/question-paper-resolv
 import { CourseComponent } from './client/course/course.component';
 import { ListCourseComponent } from './client/course/list-course/list-course.component';
 import { NewCourseComponent } from './client/course/new-course/new-course.component';
-import { CourseDataResolverService } from './client/course/course-data-resolver.service';
 import { TopicComponent } from './client/topic/topic.component';
 import { NewTopicComponent } from './client/topic/new-topic/new-topic.component';
 import { ListTopicComponent } from './client/topic/list-topic/list-topic.component';
@@ -43,17 +39,16 @@ import { QuestionsDataResolverService } from './client/question/questions-resolv
 import { DisplayQuestionComponent } from './client/question/display-question/display-question.component';
 import { DisplayQuestionPaperComponent } from './client/question-paper/display-question-paper/display-question-paper.component';
 import { QuestionPaperAssoComponent } from './client/question-paper/question-paper-asso/question-paper-asso.component';
-
 import { DisplayCoursesComponent } from './client/course/display-courses/display-courses.component';
 import { DisplayBatchComponent } from './client/create-batch/display-batch/display-batch.component';
 import { CreateExamComponent } from './client/create-batch/create-exam/create-exam.component';
 import { ListExamComponent } from './client/create-batch/create-exam/list-exam/list-exam.component';
 import { ViewExamComponent } from './client/create-batch/create-exam/view-exam/view-exam.component';
 import { CreateBatchCanDeactivateGuardService } from './client/create-batch/create-batch-candeactivate-gaurd-service';
+import { DisplayTopicComponent } from './client/topic/display-topic/display-topic.component';
 
-   
+  
     
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +76,7 @@ import { CreateBatchCanDeactivateGuardService } from './client/create-batch/crea
     DisplayQuestionPaperComponent,
     QuestionPaperAssoComponent,
     DisplayCoursesComponent,   
-    DisplayBatchComponent, CreateExamComponent, ListExamComponent, ViewExamComponent ],
+    DisplayBatchComponent, CreateExamComponent, ListExamComponent, ViewExamComponent, DisplayTopicComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -107,7 +102,7 @@ import { CreateBatchCanDeactivateGuardService } from './client/create-batch/crea
     NgbModule
   ],
   providers: [ClientDataResolverService,ClientDetailsGuardService,ConfirmationDialogService,
-    BatchDataResolverService,QuestionPaperDataResolverService,CreateClientCanDeactivateGuardService,CourseDataResolverService,
+    BatchDataResolverService,QuestionPaperDataResolverService,CreateClientCanDeactivateGuardService,
     TopicDataResolverService,QuestionsDataResolverService,CreateBatchCanDeactivateGuardService],
   
   bootstrap: [AppComponent],

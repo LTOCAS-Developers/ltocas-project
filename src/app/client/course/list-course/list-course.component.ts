@@ -11,24 +11,36 @@ import { Courses } from 'src/app/models.ts/course';
 })
 export class ListCourseComponent implements OnInit {
 
-  courses: Courses[] = [];
+  private courses:Courses[]=[];
   error: string;
+ viewedId:number;
+ private courseIds:number[]=[];
+ public _id:number;
 
   constructor(private service: ServiceService,
     private _route: ActivatedRoute,
     private _router: Router) {
 
-      const resolvedData: Courses[] | string = this._route.snapshot.data['courseslist'];
-    if (Array.isArray(resolvedData)) {
-      this.courses = resolvedData;
-    }
-    else {
-      this.error = resolvedData;  
-    }
-    this.courses = this._route.snapshot.data['courseslist'];
+    
      }
 
   ngOnInit() {
+    this._route.paramMap.subscribe(params => {
+      this._id =+params.get("id");
+      this.viewedId=this._id; //to read the route parametre value in this we are getting id
+    });   
+     this.service.getCourses().subscribe(
+      (courses)=> {
+        this.courses =courses as Courses[];
+        for(let i=0;i<this.courses.length;i++){        
+          this.courseIds.push(this.courses[i].id);
+          console.log("course.id")
+          console.log(this.courseIds)
+        }        
+        localStorage.setItem('updatedCourseIds',JSON.stringify(this.courseIds))
+        
+      }
+    )
   }
   onSelect(CoursesId:Number){
     console.log(+CoursesId);

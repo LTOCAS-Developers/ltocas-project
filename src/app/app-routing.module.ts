@@ -31,7 +31,6 @@ import { BatchDataResolverService } from './client/create-batch/batch-data-resol
 import { NewCourseComponent } from './client/course/new-course/new-course.component';
 import { ListCourseComponent } from './client/course/list-course/list-course.component';
 import { CourseComponent } from './client/course/course.component';
-import { CourseDataResolverService } from './client/course/course-data-resolver.service';
 import { TopicComponent } from './client/topic/topic.component';
 import { TopicDataResolverService } from './client/topic/topic-data-resolver.service';
 import { ListTopicComponent } from './client/topic/list-topic/list-topic.component';
@@ -48,6 +47,7 @@ import { CreateExamComponent } from './client/create-batch/create-exam/create-ex
 import { ListExamComponent } from './client/create-batch/create-exam/list-exam/list-exam.component';
 import { ViewExamComponent } from './client/create-batch/create-exam/view-exam/view-exam.component';
 import { CreateBatchCanDeactivateGuardService } from './client/create-batch/create-batch-candeactivate-gaurd-service';
+import { DisplayTopicComponent } from './client/topic/display-topic/display-topic.component';
 
 
 
@@ -112,9 +112,9 @@ const routes: Routes = [
         children: [
           {
             path: 'courselist', component: ListCourseComponent,
-            resolve: { courseslist: CourseDataResolverService }
+           
           },
-          { path: 'addcourse', component: NewCourseComponent },
+          { path: 'addcourse/:id', component: NewCourseComponent },
           { path: ":id", component: DisplayCoursesComponent, }
 
         ]
@@ -127,7 +127,8 @@ const routes: Routes = [
             path: 'topicshow', component: ListTopicComponent,
             resolve: { topicslist: TopicDataResolverService }
           },
-          { path: 'addtopic', component: NewTopicComponent },
+          { path: 'addtopic/:id', component: NewTopicComponent },
+          {path:'viewtopic/:id',component:DisplayTopicComponent},
 
         ]
       },
@@ -145,7 +146,7 @@ const routes: Routes = [
           },
           {
             path: 'asso/:id', component: QuestionPaperAssoComponent,
-            resolve: { courseList: CourseDataResolverService, topicList: TopicDataResolverService }
+            resolve: {  topicList: TopicDataResolverService }
           }
 
 
@@ -162,7 +163,7 @@ const routes: Routes = [
           { path: 'display/:id', component: DisplayQuestionComponent },
           {
             path: 'create/:id', component: CreateQuestionsComponent,
-            resolve: { courseslist: CourseDataResolverService, topicslist: TopicDataResolverService }
+            resolve: { topicslist: TopicDataResolverService }
           }
         ]
       },

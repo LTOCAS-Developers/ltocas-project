@@ -3,10 +3,9 @@
 <div *ngFor="let exam of exams; let i =index">
   <ul class="clients">
     <li>
-      <span class="badge">{{i +1}}</span>
-
+      <span [class.hasJustViewed]="selectedExamId === exam.id"class="badge">{{i +1}}</span>
       <span>{{exam.name}}</span>
-      <button class="btn btn-success btns" (click)="onSelect(exam.id)">View</button>
+      <button  [class.hasJustViewed]="selectedExamId === exam.id"class="btn btn-success btns" (click)="onSelect(exam.id)">View</button>
     </li>
   </ul>
 </div>
