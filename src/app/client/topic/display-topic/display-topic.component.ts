@@ -20,7 +20,8 @@ private viewTopic:number;
   ) { }
   private _id:number;
   private selectedTopic:Topics;
-
+  private topics:Topics[]=[];
+;
   ngOnInit() {
     this.viewTopic=+this._route.snapshot.paramMap.get('id');
     this._route.paramMap.subscribe(params=>{
@@ -28,8 +29,7 @@ private viewTopic:number;
       this.Service.getTopic(this._id).subscribe(
         (topic)=>{this.selectedTopic=topic as Topics ,
           console.log(this.selectedTopic);
-        },
-        (err:any)=>console.log(err)
+        (err:any)=>console.log(err)}
       )
     })
   }
@@ -37,9 +37,10 @@ private viewTopic:number;
   editTopic(){
     console.log(this.selectedTopic);
     this._router.navigate(['client-portal/topic/addtopic/'+this._id])
+    console.log("editTopic Id"+this._id)
   }
   addTopic(){
-    this._router.navigate(['client-portal/topic/addtopic'])
+    this._router.navigate(['client-portal/topic/addtopic/'])
   }
   openConfirmationDialog(){
     this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')

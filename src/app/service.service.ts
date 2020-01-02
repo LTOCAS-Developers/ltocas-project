@@ -221,7 +221,7 @@ export class ServiceService {
   }
 
   updateTopic(topic: Topics): Observable<void> {
-    return this._http.put<void>("http://localhost:8086/questionsTopic/update" + topic, {
+    return this._http.put<void>("http://localhost:8086/questionsTopic/update" , topic, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

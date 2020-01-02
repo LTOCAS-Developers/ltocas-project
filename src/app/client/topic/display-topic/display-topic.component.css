@@ -40,10 +40,19 @@
   .backlist{
     margin-top: 0px;
     float: left;
+    background-color: #3f51b5
+  }
+  .edit{
+background-color: white;
+color:#3f51b5
+
+
+
   }
 
   .viewnext{
-    margin-top: 0px;
+    margin-top: 0px;background-color: #3f51b5
+
   }
 
   .btn-success{

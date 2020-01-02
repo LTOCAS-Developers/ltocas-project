@@ -34,6 +34,7 @@ export class NewTopicComponent implements OnInit {
     this._route.paramMap.subscribe(params => {
       const id = +params.get('id');
       this.newTopicid = id;
+
       if (id === 0) {
         this.newTopic();
       }
@@ -52,20 +53,22 @@ export class NewTopicComponent implements OnInit {
   getQuestionTopic(id: number) {
     this.service.getTopic(id).subscribe(
       (existingTopic: Topics) => {
-        this.editTopic(existingTopic),
+        this.updateTopic(existingTopic),
         console.log(existingTopic),
         (err: any) => console.log(err)
       }
     )
   }
 
-  private editTopic(topic: Topics) {
+  private updateTopic(topic: Topics) {
     this.panelTitle = "Edit Topic";
     console.log(topic.topic)
     this.topicForm.patchValue({
       name: topic.topic,
-      course: topic.coursePojo.id
-
+coursePojo:{
+  id:topic.coursePojo.id,
+  name:topic.coursePojo.name
+}
 
 
     })
@@ -73,6 +76,7 @@ export class NewTopicComponent implements OnInit {
   private newTopic() {
     {
       this.submitted = false;
+      this.topicForm.reset();
       this.topicForm = this.fb.group({
         topic: ['', Validators.required],
         course: ["", Validators.required]
@@ -107,6 +111,7 @@ export class NewTopicComponent implements OnInit {
         );
       }
       else {
+        this.topicForm.value.id=this.newTopicid;
         this.service.updateTopic(this.topicForm.value).subscribe(
           () => {
             console.log(this.topicForm.value);
